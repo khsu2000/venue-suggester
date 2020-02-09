@@ -1,0 +1,2160 @@
+{
+    "meta": {
+        "code": 200,
+        "requestId": "5e406a3f006dce001b980dd4"
+    },
+    "response": {
+        "geocode": {
+            "feature": {
+                "cc": "US",
+                "displayName": "Berkeley, CA",
+                "geometry": {
+                    "bounds": {
+                        "ne": {
+                            "lat": 37.905823999999996,
+                            "lng": -122.234185
+                        },
+                        "sw": {
+                            "lat": 37.835727,
+                            "lng": -122.367781
+                        }
+                    },
+                    "center": {
+                        "lat": 37.87159,
+                        "lng": -122.27275
+                    }
+                },
+                "highlightedName": "<b>Berkeley</b>, CA",
+                "id": "geonameid:5327684",
+                "longId": "72057594043255620",
+                "matchedName": "Berkeley, CA",
+                "name": "Berkeley",
+                "slug": "berkeley-california",
+                "woeType": 7
+            },
+            "parents": [],
+            "what": "",
+            "where": "berkeley"
+        },
+        "venues": [
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4a134a20f964a520cf771fe3",
+                "location": {
+                    "address": "2090 Kittredge St",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "crossStreet": "Shattuck Ave",
+                    "distance": 1090,
+                    "formattedAddress": [
+                        "2090 Kittredge St (Shattuck Ave)",
+                        "Berkeley, CA 94704",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.86769636277647,
+                            "lng": -122.26912230669868
+                        }
+                    ],
+                    "lat": 37.86769636277647,
+                    "lng": -122.26912230669868,
+                    "postalCode": "94704",
+                    "state": "CA"
+                },
+                "name": "Berkeley Public Library (Central Branch)",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4bb52ca3ef159c74346574f7",
+                "location": {
+                    "address": "UC Berkeley",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 784,
+                    "formattedAddress": [
+                        "UC Berkeley",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.87270880353281,
+                            "lng": -122.25965101367628
+                        }
+                    ],
+                    "lat": 37.87270880353281,
+                    "lng": -122.25965101367628,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Doe Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4cd1980b2fd9b60c41d587eb",
+                "location": {
+                    "address": "2101 Valley Life Sciences Bldg Bldg 6500",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 774,
+                    "formattedAddress": [
+                        "2101 Valley Life Sciences Bldg Bldg 6500",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.87144036972979,
+                            "lng": -122.26239323616028
+                        }
+                    ],
+                    "lat": 37.87144036972979,
+                    "lng": -122.26239323616028,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Koshland Bioscience & Natural Resources Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b7da1ddf964a5201acb2fe3",
+                "location": {
+                    "address": "Doe Library",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "crossStreet": "Sather Rd",
+                    "distance": 893,
+                    "formattedAddress": [
+                        "Doe Library (Sather Rd)",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.873594251668365,
+                            "lng": -122.2601886433246
+                        }
+                    ],
+                    "lat": 37.873594251668365,
+                    "lng": -122.2601886433246,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "C.V. Starr East Asian Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4ca39492d7c33704f32ca262",
+                "location": {
+                    "address": "2400 Ridge Rd",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "crossStreet": "at Le Conte Ave.",
+                    "distance": 1153,
+                    "formattedAddress": [
+                        "2400 Ridge Rd (at Le Conte Ave.)",
+                        "Berkeley, CA 94709",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.87559314197809,
+                            "lng": -122.26185611243783
+                        }
+                    ],
+                    "lat": 37.87559314197809,
+                    "lng": -122.26185611243783,
+                    "postalCode": "94709",
+                    "state": "CA"
+                },
+                "name": "Flora Lamson Hewlett Library of the Graduate Theological Union",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b7ae975f964a5209b452fe3",
+                "location": {
+                    "address": "S350 Haas Business",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "crossStreet": "Gayley Rd",
+                    "distance": 695,
+                    "formattedAddress": [
+                        "S350 Haas Business (Gayley Rd)",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.871640418062796,
+                            "lng": -122.25348513284777
+                        }
+                    ],
+                    "lat": 37.871640418062796,
+                    "lng": -122.25348513284777,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Thomas J. Long Business & Economics Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4ad0dda9f964a5208fda20e3",
+                "location": {
+                    "address": "1125 University Ave",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "crossStreet": "at San Pablo",
+                    "distance": 3017,
+                    "formattedAddress": [
+                        "1125 University Ave (at San Pablo)",
+                        "Berkeley, CA 94702",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.86931794662533,
+                            "lng": -122.29097338373512
+                        }
+                    ],
+                    "lat": 37.86931794662533,
+                    "lng": -122.29097338373512,
+                    "postalCode": "94702",
+                    "state": "CA"
+                },
+                "name": "West Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4bb10f04f964a520ae763ce3",
+                "location": {
+                    "address": "UC Doe Library",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 730,
+                    "formattedAddress": [
+                        "UC Doe Library",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.87249628027387,
+                            "lng": -122.25573735804454
+                        }
+                    ],
+                    "lat": 37.87249628027387,
+                    "lng": -122.25573735804454,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Library of Chemistry",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b847479f964a5208f3631e3",
+                "location": {
+                    "address": "1170 The Alameda",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "crossStreet": "at Hopkins",
+                    "distance": 2695,
+                    "formattedAddress": [
+                        "1170 The Alameda (at Hopkins)",
+                        "Berkeley, CA 94707",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.88540916830636,
+                            "lng": -122.27524410353648
+                        }
+                    ],
+                    "lat": 37.88540916830636,
+                    "lng": -122.27524410353648,
+                    "postalCode": "94707",
+                    "state": "CA"
+                },
+                "name": "North Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "43f5f8a9f964a520a92f1fe3",
+                "location": {
+                    "address": "100 Larkin St",
+                    "cc": "US",
+                    "city": "San Francisco",
+                    "country": "United States",
+                    "crossStreet": "at Grove St",
+                    "distance": 16992,
+                    "formattedAddress": [
+                        "100 Larkin St (at Grove St)",
+                        "San Francisco, CA 94102",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.77881442156546,
+                            "lng": -122.41551743910111
+                        }
+                    ],
+                    "lat": 37.77881442156546,
+                    "lng": -122.41551743910111,
+                    "neighborhood": "Civic Center",
+                    "postalCode": "94102",
+                    "state": "CA"
+                },
+                "name": "San Francisco Public Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b887332f964a520c1f831e3",
+                "location": {
+                    "address": "Boalt Hall",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 508,
+                    "formattedAddress": [
+                        "Boalt Hall",
+                        "Berkeley, CA 94720-4044",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.86963460194589,
+                            "lng": -122.25338916329734
+                        }
+                    ],
+                    "lat": 37.86963460194589,
+                    "lng": -122.25338916329734,
+                    "postalCode": "94720-4044",
+                    "state": "CA"
+                },
+                "name": "Law Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4cb5e7c564998cfa146711a2",
+                "location": {
+                    "address": "210 Wurster Hall",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 582,
+                    "formattedAddress": [
+                        "210 Wurster Hall",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.870922899111164,
+                            "lng": -122.25463716227881
+                        }
+                    ],
+                    "lat": 37.870922899111164,
+                    "lng": -122.25463716227881,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Environmental Design Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4bb52c43ef159c74866474f7",
+                "location": {
+                    "address": "230 Kroeber Hall",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 453,
+                    "formattedAddress": [
+                        "230 Kroeber Hall",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.86977827197315,
+                            "lng": -122.25497568458992
+                        }
+                    ],
+                    "lat": 37.86977827197315,
+                    "lng": -122.25497568458992,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "The George and Mary Foster Anthropology Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b847600f964a520e03631e3",
+                "location": {
+                    "address": "1901 Russell St",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "crossStreet": "at Martin Luther King, Jr. Blvd.",
+                    "distance": 1651,
+                    "formattedAddress": [
+                        "1901 Russell St (at Martin Luther King, Jr. Blvd.)",
+                        "Berkeley, CA 94703",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.85632882999323,
+                            "lng": -122.27115323880767
+                        }
+                    ],
+                    "lat": 37.85632882999323,
+                    "lng": -122.27115323880767,
+                    "postalCode": "94703",
+                    "state": "CA"
+                },
+                "name": "South Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4e93367c02d5dcbe60641ec6",
+                "location": {
+                    "address": "2299 Piedmont Ave",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 606,
+                    "formattedAddress": [
+                        "2299 Piedmont Ave",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.86953885480755,
+                            "lng": -122.25165476943461
+                        }
+                    ],
+                    "lat": 37.86953885480755,
+                    "lng": -122.25165476943461,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "International House - Resident Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/education/default_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1ae941735",
+                        "name": "University",
+                        "pluralName": "Universities",
+                        "primary": true,
+                        "shortName": "University"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4bb38b7114cfd13ae83016ab",
+                "location": {
+                    "address": "490 Doe Library",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 644,
+                    "formattedAddress": [
+                        "490 Doe Library",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.871535648594126,
+                            "lng": -122.25474089384079
+                        }
+                    ],
+                    "lat": 37.871535648594126,
+                    "lng": -122.25474089384079,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Fong Optometry and Health Sciences Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/education/other_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a8941735",
+                        "name": "General College & University",
+                        "pluralName": "General Colleges & Universities",
+                        "primary": true,
+                        "shortName": "Education"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4d51dd103626a09393c328bd",
+                "location": {
+                    "address": "2050 Center St",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "crossStreet": "1st Floor",
+                    "distance": 1213,
+                    "formattedAddress": [
+                        "2050 Center St (1st Floor)",
+                        "Berkeley, CA 94704",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.87017554300823,
+                            "lng": -122.26965590249812
+                        }
+                    ],
+                    "lat": 37.87017554300823,
+                    "lng": -122.26965590249812,
+                    "postalCode": "94704",
+                    "state": "CA"
+                },
+                "name": "Berkeley City College Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "59e8dc921bc704513ab74a54",
+                "location": {
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 498,
+                    "formattedAddress": [
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.869633,
+                            "lng": -122.25359
+                        }
+                    ],
+                    "lat": 37.869633,
+                    "lng": -122.25359,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Berkeley Law Library LL131",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4abd198df964a5206f8820e3",
+                "location": {
+                    "address": "UC Berkeley",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 705,
+                    "formattedAddress": [
+                        "UC Berkeley",
+                        "Berkeley, CA 94709",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.872111934468776,
+                            "lng": -122.25901985721966
+                        }
+                    ],
+                    "lat": 37.872111934468776,
+                    "lng": -122.25901985721966,
+                    "postalCode": "94709",
+                    "state": "CA"
+                },
+                "name": "Bancroft Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4aae8181f964a520466220e3",
+                "location": {
+                    "address": "UC Doe Library",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 795,
+                    "formattedAddress": [
+                        "UC Doe Library",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.87252697851096,
+                            "lng": -122.2605882102385
+                        }
+                    ],
+                    "lat": 37.87252697851096,
+                    "lng": -122.2605882102385,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Moffitt Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "49f090a3f964a52036691fe3",
+                "location": {
+                    "address": "125 14th St",
+                    "cc": "US",
+                    "city": "Oakland",
+                    "country": "United States",
+                    "crossStreet": "Madison",
+                    "distance": 7226,
+                    "formattedAddress": [
+                        "125 14th St (Madison)",
+                        "Oakland, CA 94612",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.80132000489048,
+                            "lng": -122.26388497550296
+                        }
+                    ],
+                    "lat": 37.80132000489048,
+                    "lng": -122.26388497550296,
+                    "neighborhood": "Downtown Oakland",
+                    "postalCode": "94612",
+                    "state": "CA"
+                },
+                "name": "Oakland Main Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/apartment_",
+                            "suffix": ".png"
+                        },
+                        "id": "4d954b06a243a5684965b473",
+                        "name": "Residential Building (Apartment / Condo)",
+                        "pluralName": "Residential Buildings (Apartments / Condos)",
+                        "primary": true,
+                        "shortName": "Residential"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b2b2d26f964a520dbb424e3",
+                "location": {
+                    "address": "2020 Kittredge St",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 1108,
+                    "formattedAddress": [
+                        "2020 Kittredge St",
+                        "Berkeley, CA 94704",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.86768942565761,
+                            "lng": -122.26932940294996
+                        }
+                    ],
+                    "lat": 37.86768942565761,
+                    "lng": -122.26932940294996,
+                    "postalCode": "94704",
+                    "state": "CA"
+                },
+                "name": "Library Gardens",
+                "referralId": "v-1581279983",
+                "venuePage": {
+                    "id": "84025678"
+                }
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4ac7e338f964a52059ba20e3",
+                "location": {
+                    "address": "5366 College Ave",
+                    "cc": "US",
+                    "city": "Oakland",
+                    "country": "United States",
+                    "crossStreet": "at Manila Ave",
+                    "distance": 2933,
+                    "formattedAddress": [
+                        "5366 College Ave (at Manila Ave)",
+                        "Oakland, CA 94618",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.8400177676736,
+                            "lng": -122.25134881027923
+                        }
+                    ],
+                    "lat": 37.8400177676736,
+                    "lng": -122.25134881027923,
+                    "postalCode": "94618",
+                    "state": "CA"
+                },
+                "name": "Rockridge Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4c54e24f06901b8d5a517d4c",
+                "location": {
+                    "address": "6515 Telegraph Ave",
+                    "cc": "US",
+                    "city": "Oakland",
+                    "country": "United States",
+                    "distance": 1689,
+                    "formattedAddress": [
+                        "6515 Telegraph Ave",
+                        "Oakland, CA 94609",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.85108983235599,
+                            "lng": -122.26049522196926
+                        }
+                    ],
+                    "lat": 37.85108983235599,
+                    "lng": -122.26049522196926,
+                    "postalCode": "94609",
+                    "state": "CA"
+                },
+                "name": "Nibyl Proctor Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4a1070c1f964a520c5761fe3",
+                "location": {
+                    "address": "960 4th St",
+                    "cc": "US",
+                    "city": "San Francisco",
+                    "country": "United States",
+                    "crossStreet": "at Berry",
+                    "distance": 15641,
+                    "formattedAddress": [
+                        "960 4th St (at Berry)",
+                        "San Francisco, CA 94158",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.77549447249032,
+                            "lng": -122.39296676571031
+                        }
+                    ],
+                    "lat": 37.77549447249032,
+                    "lng": -122.39296676571031,
+                    "postalCode": "94158",
+                    "state": "CA"
+                },
+                "name": "Mission Bay Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "54235c27498e4b6aeea61d11",
+                "location": {
+                    "address": "100 Larkin St Fl 2",
+                    "cc": "US",
+                    "city": "San Francisco",
+                    "country": "United States",
+                    "crossStreet": "at Grove St",
+                    "distance": 16990,
+                    "formattedAddress": [
+                        "100 Larkin St Fl 2 (at Grove St)",
+                        "San Francisco, CA 94102",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.77907633793345,
+                            "lng": -122.41572439670563
+                        }
+                    ],
+                    "lat": 37.77907633793345,
+                    "lng": -122.41572439670563,
+                    "postalCode": "94102",
+                    "state": "CA"
+                },
+                "name": "Library for the Blind and Print Disabled",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4a9ed875f964a520743b20e3",
+                "location": {
+                    "address": "5606 San Pablo Ave",
+                    "cc": "US",
+                    "city": "Oakland",
+                    "country": "United States",
+                    "distance": 3722,
+                    "formattedAddress": [
+                        "5606 San Pablo Ave",
+                        "Oakland, CA 94608",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.83927633171824,
+                            "lng": -122.28235524273296
+                        }
+                    ],
+                    "lat": 37.83927633171824,
+                    "lng": -122.28235524273296,
+                    "postalCode": "94608",
+                    "state": "CA"
+                },
+                "name": "Golden Gate Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b2d269ef964a5208acf24e3",
+                "location": {
+                    "address": "2940 Benvenue Ave",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "crossStreet": "at Ashby Ave",
+                    "distance": 1074,
+                    "formattedAddress": [
+                        "2940 Benvenue Ave (at Ashby Ave)",
+                        "Berkeley, CA 94705",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.85657473789522,
+                            "lng": -122.25425420400728
+                        }
+                    ],
+                    "lat": 37.85657473789522,
+                    "lng": -122.25425420400728,
+                    "postalCode": "94705",
+                    "state": "CA"
+                },
+                "name": "Claremont Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4ab426cef964a5201d7020e3",
+                "location": {
+                    "address": "5205 Telegraph Ave",
+                    "cc": "US",
+                    "city": "Oakland",
+                    "country": "United States",
+                    "crossStreet": "at 52nd St",
+                    "distance": 3133,
+                    "formattedAddress": [
+                        "5205 Telegraph Ave (at 52nd St)",
+                        "Oakland, CA 94609",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.8381925082873,
+                            "lng": -122.26247158420276
+                        }
+                    ],
+                    "lat": 37.8381925082873,
+                    "lng": -122.26247158420276,
+                    "postalCode": "94609",
+                    "state": "CA"
+                },
+                "name": "Temescal Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4bb52f5cef159c74126a74f7",
+                "location": {
+                    "address": "1 University Hall",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 1102,
+                    "formattedAddress": [
+                        "1 University Hall",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.872321092503796,
+                            "lng": -122.26656568462269
+                        }
+                    ],
+                    "lat": 37.872321092503796,
+                    "lng": -122.26656568462269,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Public Health Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "5113076ce4b0f2d0075ae0e1",
+                "location": {
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 832,
+                    "formattedAddress": [
+                        "Berkeley, CA 94704",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.87203369686093,
+                            "lng": -122.26250582408395
+                        }
+                    ],
+                    "lat": 37.87203369686093,
+                    "lng": -122.26250582408395,
+                    "postalCode": "94704",
+                    "state": "CA"
+                },
+                "name": "VLSB Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b9e9983f964a520c2f236e3",
+                "location": {
+                    "address": "101 Doe Library",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 787,
+                    "formattedAddress": [
+                        "101 Doe Library",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.87272343286045,
+                            "lng": -122.25967752080258
+                        }
+                    ],
+                    "lat": 37.87272343286045,
+                    "lng": -122.25967752080258,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Morrison Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b8446b7f964a520f12b31e3",
+                "location": {
+                    "address": "1801 Adeline St",
+                    "cc": "US",
+                    "city": "Oakland",
+                    "country": "United States",
+                    "distance": 6317,
+                    "formattedAddress": [
+                        "1801 Adeline St",
+                        "Oakland, CA 94607",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.814289059203865,
+                            "lng": -122.28651195492952
+                        }
+                    ],
+                    "lat": 37.814289059203865,
+                    "lng": -122.28651195492952,
+                    "postalCode": "94607",
+                    "state": "CA"
+                },
+                "name": "West Oakland Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "46dea7aff964a520994a1fe3",
+                "location": {
+                    "address": "1550 Oak St",
+                    "cc": "US",
+                    "city": "Alameda",
+                    "country": "United States",
+                    "crossStreet": "Lincoln Avenue",
+                    "distance": 11112,
+                    "formattedAddress": [
+                        "1550 Oak St (Lincoln Avenue)",
+                        "Alameda, CA 94501",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.76684644003909,
+                            "lng": -122.24229855142758
+                        }
+                    ],
+                    "lat": 37.76684644003909,
+                    "lng": -122.24229855142758,
+                    "neighborhood": "East End",
+                    "postalCode": "94501",
+                    "state": "CA"
+                },
+                "name": "Alameda Free Library Main Branch",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4bb2a55335f0c9b6b79abb83",
+                "location": {
+                    "address": "110 Doe Library",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 884,
+                    "formattedAddress": [
+                        "110 Doe Library",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.87387753371865,
+                            "lng": -122.25822066860317
+                        }
+                    ],
+                    "lat": 37.87387753371865,
+                    "lng": -122.25822066860317,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Kresge Engineering Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b2a78d1f964a520cda924e3",
+                "location": {
+                    "address": "550 El Embarcadero",
+                    "cc": "US",
+                    "city": "Oakland",
+                    "country": "United States",
+                    "crossStreet": "btw Lakeshore & Grand",
+                    "distance": 6358,
+                    "formattedAddress": [
+                        "550 El Embarcadero (btw Lakeshore & Grand)",
+                        "Oakland, CA 94610",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.80922532942963,
+                            "lng": -122.24895257371497
+                        }
+                    ],
+                    "lat": 37.80922532942963,
+                    "lng": -122.24895257371497,
+                    "neighborhood": "Adams Point",
+                    "postalCode": "94610",
+                    "state": "CA"
+                },
+                "name": "Lakeview Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b8445b1f964a520b52b31e3",
+                "location": {
+                    "address": "1687 Mountain Blvd",
+                    "cc": "US",
+                    "city": "Oakland",
+                    "country": "United States",
+                    "distance": 5328,
+                    "formattedAddress": [
+                        "1687 Mountain Blvd",
+                        "Oakland, CA 94611",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.8320638520767,
+                            "lng": -122.2141481385906
+                        }
+                    ],
+                    "lat": 37.8320638520767,
+                    "lng": -122.2141481385906,
+                    "postalCode": "94611",
+                    "state": "CA"
+                },
+                "name": "Montclair Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4c9901a8671db60cf04cbef6",
+                "location": {
+                    "address": "2244-2298 Bancroft Way",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 677,
+                    "formattedAddress": [
+                        "2244-2298 Bancroft Way",
+                        "Berkeley, CA 94704",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.86796455848379,
+                            "lng": -122.26420068235338
+                        }
+                    ],
+                    "lat": 37.86796455848379,
+                    "lng": -122.26420068235338,
+                    "postalCode": "94704",
+                    "state": "CA"
+                },
+                "name": "UC Berkeley Career Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b70be8ff964a520a12c2de3",
+                "location": {
+                    "address": "UC Doe Library",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 512,
+                    "formattedAddress": [
+                        "UC Doe Library",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.870566098695605,
+                            "lng": -122.25615579027681
+                        }
+                    ],
+                    "lat": 37.870566098695605,
+                    "lng": -122.25615579027681,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Hargrove Music Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4bb52fbdef159c74c46a74f7",
+                "location": {
+                    "address": "120 Doe Library",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 779,
+                    "formattedAddress": [
+                        "120 Doe Library",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.87286350101698,
+                            "lng": -122.25863413497406
+                        }
+                    ],
+                    "lat": 37.87286350101698,
+                    "lng": -122.25863413497406,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "South/Southeast Asia Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4d095d864afc2d4381d37afd",
+                "location": {
+                    "address": "412 McLaughlin Hall",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "crossStreet": "UC Berkeley",
+                    "distance": 883,
+                    "formattedAddress": [
+                        "412 McLaughlin Hall (UC Berkeley)",
+                        "Berkeley, CA 94720-1720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.8737614899334,
+                            "lng": -122.2589941692191
+                        }
+                    ],
+                    "lat": 37.8737614899334,
+                    "lng": -122.2589941692191,
+                    "postalCode": "94720-1720",
+                    "state": "CA"
+                },
+                "name": "Institute of Transportation Studies Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "579ea2e4498ebfdb3d832298",
+                "location": {
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 2124,
+                    "formattedAddress": [
+                        "Berkeley, CA 94709",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.882108,
+                            "lng": -122.269859
+                        }
+                    ],
+                    "lat": 37.882108,
+                    "lng": -122.269859,
+                    "postalCode": "94709",
+                    "state": "CA"
+                },
+                "name": "little free library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "52fbd294498e8528fce9df7b",
+                "location": {
+                    "cc": "US",
+                    "city": "Oakland",
+                    "country": "United States",
+                    "distance": 689,
+                    "formattedAddress": [
+                        "Oakland, CA",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.871358,
+                            "lng": -122.260844
+                        }
+                    ],
+                    "lat": 37.871358,
+                    "lng": -122.260844,
+                    "state": "CA"
+                },
+                "name": "Dwinelle Hall History Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4c97e928e34e6dcb5447675a",
+                "location": {
+                    "address": "U C Berkeley",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 667,
+                    "formattedAddress": [
+                        "U C Berkeley",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.870857102533385,
+                            "lng": -122.26135374817318
+                        }
+                    ],
+                    "lat": 37.870857102533385,
+                    "lng": -122.26135374817318,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "German Department Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b1f081bf964a520152324e3",
+                "location": {
+                    "address": "500 Cortland Ave",
+                    "cc": "US",
+                    "city": "San Francisco",
+                    "country": "United States",
+                    "crossStreet": "at Moultrie St",
+                    "distance": 19912,
+                    "formattedAddress": [
+                        "500 Cortland Ave (at Moultrie St)",
+                        "San Francisco, CA 94110",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.738837011066195,
+                            "lng": -122.41612672805786
+                        }
+                    ],
+                    "lat": 37.738837011066195,
+                    "lng": -122.41612672805786,
+                    "postalCode": "94110",
+                    "state": "CA"
+                },
+                "name": "Bernal Heights Branch Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4a808384f964a52083f51fe3",
+                "location": {
+                    "address": "850 Columbus Ave",
+                    "cc": "US",
+                    "city": "San Francisco",
+                    "country": "United States",
+                    "crossStreet": "at Lombard Street",
+                    "distance": 15445,
+                    "formattedAddress": [
+                        "850 Columbus Ave (at Lombard Street)",
+                        "San Francisco, CA 94133",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.80263339908913,
+                            "lng": -122.41319083033902
+                        }
+                    ],
+                    "lat": 37.80263339908913,
+                    "lng": -122.41319083033902,
+                    "postalCode": "94133",
+                    "state": "CA"
+                },
+                "name": "North Beach Branch Library",
+                "referralId": "v-1581279983",
+                "venuePage": {
+                    "id": "53255640"
+                }
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4ff32a16e4b0aeae9cc02277",
+                "location": {
+                    "address": "227 Haviland Hall",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 932,
+                    "formattedAddress": [
+                        "227 Haviland Hall",
+                        "Berkeley, CA 94709",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.873671160684964,
+                            "lng": -122.26117650462008
+                        }
+                    ],
+                    "lat": 37.873671160684964,
+                    "lng": -122.26117650462008,
+                    "postalCode": "94709",
+                    "state": "CA"
+                },
+                "name": "Social Welfare Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d1a7941735",
+                        "name": "College Library",
+                        "pluralName": "College Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "54c91243498e05697a11eb0b",
+                "location": {
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 655,
+                    "formattedAddress": [
+                        "Berkeley, CA",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.871203,
+                            "lng": -122.260397
+                        }
+                    ],
+                    "lat": 37.871203,
+                    "lng": -122.260397,
+                    "state": "CA"
+                },
+                "name": "Olof Lundberg Memorial Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4d656a0289238cfa6d749936",
+                "location": {
+                    "address": "Tolman Hall",
+                    "cc": "US",
+                    "city": "Berkeley",
+                    "country": "United States",
+                    "distance": 1069,
+                    "formattedAddress": [
+                        "Tolman Hall",
+                        "Berkeley, CA 94720",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.87411168022322,
+                            "lng": -122.26341972159751
+                        }
+                    ],
+                    "lat": 37.87411168022322,
+                    "lng": -122.26341972159751,
+                    "postalCode": "94720",
+                    "state": "CA"
+                },
+                "name": "Education Psychology Library",
+                "referralId": "v-1581279983"
+            },
+            {
+                "categories": [
+                    {
+                        "icon": {
+                            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                            "suffix": ".png"
+                        },
+                        "id": "4bf58dd8d48988d12f941735",
+                        "name": "Library",
+                        "pluralName": "Libraries",
+                        "primary": true,
+                        "shortName": "Library"
+                    }
+                ],
+                "hasPerk": false,
+                "id": "4b5f8e30f964a5205bc129e3",
+                "location": {
+                    "address": "1247 Marin Ave",
+                    "cc": "US",
+                    "city": "Albany",
+                    "country": "United States",
+                    "distance": 4024,
+                    "formattedAddress": [
+                        "1247 Marin Ave",
+                        "Albany, CA 94706",
+                        "United States"
+                    ],
+                    "labeledLatLngs": [
+                        {
+                            "label": "display",
+                            "lat": 37.88803269741943,
+                            "lng": -122.29321185345528
+                        }
+                    ],
+                    "lat": 37.88803269741943,
+                    "lng": -122.29321185345528,
+                    "postalCode": "94706",
+                    "state": "CA"
+                },
+                "name": "Albany Library",
+                "referralId": "v-1581279983"
+            }
+        ]
+    }
+}
