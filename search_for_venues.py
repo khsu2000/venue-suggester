@@ -3,6 +3,7 @@ Uses Foursquare's Places API to search for nearby venues given location data and
 """ 
 
 import config
+import numpy as np
 import json
 import requests
 from get_current_location import write_to_json, read_from_json
@@ -21,10 +22,10 @@ def nearby_venues(location_data, query, radius = 16000, limit = 50):
 
     Returns:
     --------
-    dictionary: List of venues and info from GET request. Upon failure, returns empty dictionary.
+    list: List of venues and info from GET request. Upon failure, returns empty dictionary.
     """
     try:
-        url = "https://api.foursquare.com/v2/venues/search"
+        url = "https://api.foursquare.com/v2/venues/explore"
         year = location_data["timestamp"][0:4]
         month = location_data["timestamp"][5:7]
         day = location_data["timestamp"][8:10]
@@ -40,16 +41,81 @@ def nearby_venues(location_data, query, radius = 16000, limit = 50):
             openNow = 1 
         )
         resp = requests.get(url = url, params = params)
-        data = json.loads(resp.text) 
+        data = json.loads(resp.text)["response"]["groups"][0]["items"]
+        data = [d["venue"] for d in data]
         return data
     except Exception as e: 
         print("Explore request failed: {0}".format(e))
         return dict([]) 
 
+def select_venue(venues_data, distribution_generator = None, *args):
+    """
+    Randomly selects a single venue from provided list of venues or reads venue list from specified file. 
+
+    Parameters:
+    -----------
+    venues_data (list / string): Either a list of dictionaries produced by api request, or the name of a .json
+        file that stores the venue data. If a string is provided, this function will read from the file.  
+    distribution_generator (function, optional): function that maps venue data to probability distribution. This 
+        distribution is used to select the venue.
+    *args (optional): Optional, additional arguments that are passed into distribution_generator along with 
+        venues_data.
+    
+    Returns:
+    --------
+    dictionary: Information on a single venue. If this function fails, it will return None instead. 
+    """
+    if type(venues_data) == str: 
+        venues_data = read_from_json(venues_data) 
+    try:
+        if distribution_generator != None:
+            p = distribution_generator(venues_data, *args)
+            return np.random.choice(venues_data, p = p)
+        else:
+            return np.random.choice(venues_data)
+    except Exception as e:
+        print("Failed to select venue:", e)
+        
+def latlng_distribution(venues_data, original_location, smoothing_coeff = 0.2):
+    """
+    Uses each venue's distance from original location to create a probability distribution. 
+    Probability of selection scales inversely with distance. Optional smoothing coefficient to 
+    influence how much impact distance has. 
+
+    Parameters:
+    -----------
+    venues_data (list): A list of dictionaries produced by api request.
+    original_location (tuple): A tuple of (lat, lon) coordinates that serves as home location. Each venue's distance 
+        is calculated from this location.
+    smoothing_coeff (float, optional): A number between 0 and 1 inclusive. If the coefficient is 0, the probability of 
+        selecting a venue is directly related. If the coefficient is 1, the distribution is uniform. The default 
+        value is 0.2.
+
+    Returns:
+    --------
+    list: A probability distribution for selecting each venue. 
+    """ 
+    # Use of euclidean_distance approximation valid for small radii. 
+    euclidean_distance = lambda coord1, coord2: np.sqrt(np.sum((np.array(coord1) - np.array(coord2)) ** 2)) 
+    distances = np.array([])
+    try:
+        for venue in venues_data:
+            venue_latlng = (venue["location"]["lat"], venue["location"]["lng"])
+            distances = np.append(distances, 1 / euclidean_distance(original_location, venue_latlng))
+        smoothed_distances = (1 - smoothing_coeff) * distances + smoothing_coeff * np.sum(distances)
+        smoothed_distances /= np.sum(smoothed_distances)
+        return smoothed_distances
+    except Exception as e:
+        print("Failed to create distribution:", e, "; returning uniform distribution.")
+        return np.ones(len(venues_data)) / len(venues_data)
+
 def main():
     location_data = read_from_json("location_data.json")
     data = nearby_venues(location_data, query = "library")
     write_to_json(data, "venues.json")
+    original_location = (location_data["latitude"], location_data["longitude"])
+    selected_venue = select_venue("venues.json", latlng_distribution, original_location)
+    write_to_json(selected_venue, "selected_venue.json")
 
 if __name__ == "__main__":
     main()

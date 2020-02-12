@@ -1,0 +1,44 @@
+{
+    "categories": [
+        {
+            "icon": {
+                "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                "suffix": ".png"
+            },
+            "id": "4bf58dd8d48988d1a7941735",
+            "name": "College Library",
+            "pluralName": "College Libraries",
+            "primary": true,
+            "shortName": "Library"
+        }
+    ],
+    "id": "4bb23ebd35f0c9b68b03bb83",
+    "location": {
+        "address": "UC Doe Library",
+        "cc": "US",
+        "city": "Berkeley",
+        "country": "United States",
+        "distance": 777,
+        "formattedAddress": [
+            "UC Doe Library",
+            "Berkeley, CA 94720",
+            "United States"
+        ],
+        "labeledLatLngs": [
+            {
+                "label": "display",
+                "lat": 37.87276307462416,
+                "lng": -122.25912226236099
+            }
+        ],
+        "lat": 37.87276307462416,
+        "lng": -122.25912226236099,
+        "postalCode": "94720",
+        "state": "CA"
+    },
+    "name": "Gardner Main Stacks",
+    "photos": {
+        "count": 0,
+        "groups": []
+    }
+}
