@@ -896,6 +896,47 @@
                     "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
                     "suffix": ".png"
                 },
+                "id": "4bf58dd8d48988d12f941735",
+                "name": "Library",
+                "pluralName": "Libraries",
+                "primary": true,
+                "shortName": "Library"
+            }
+        ],
+        "id": "523e3fc0498edd52e78f95df",
+        "location": {
+            "cc": "US",
+            "city": "Berkeley",
+            "country": "United States",
+            "distance": 1652,
+            "formattedAddress": [
+                "Berkeley, CA",
+                "United States"
+            ],
+            "labeledLatLngs": [
+                {
+                    "label": "display",
+                    "lat": 37.85640914317627,
+                    "lng": -122.27124595027387
+                }
+            ],
+            "lat": 37.85640914317627,
+            "lng": -122.27124595027387,
+            "state": "CA"
+        },
+        "name": "Berkeley Tool Library",
+        "photos": {
+            "count": 0,
+            "groups": []
+        }
+    },
+    {
+        "categories": [
+            {
+                "icon": {
+                    "prefix": "https://ss3.4sqi.net/img/categories_v2/building/library_",
+                    "suffix": ".png"
+                },
                 "id": "4bf58dd8d48988d1a7941735",
                 "name": "College Library",
                 "pluralName": "College Libraries",

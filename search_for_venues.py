@@ -70,7 +70,7 @@ def select_venue(venues_data, *args, p = [], distribution_generator = None):
     if type(venues_data) == str: 
         venues_data = read_from_json(venues_data) 
     try:
-        if p:
+        if len(p) > 0:
             return np.random.choice(venues_data, p = p)
         if distribution_generator != None:
             p = distribution_generator(venues_data, *args)
@@ -114,12 +114,10 @@ def latlng_distribution(venues_data, original_location, smoothing_coeff = 0.2):
 
 def main():
     location_data = read_from_json("location_data.json")
-    data = nearby_venues(location_data, query = "library")
-    write_to_json(data, "venues.json")
+    write_to_json(nearby_venues(location_data, query = "library"), "venues.json")
     original_location = (location_data["latitude"], location_data["longitude"])
-    p = latlng_distribution(original_location)
-    selected_venue = select_venue("venues.json", p = p)
-    write_to_json(selected_venue, "selected_venue.json")
+    p = latlng_distribution(read_from_json("venues.json"), original_location)
+    write_to_json(select_venue("venues.json", p = p), "selected_venue.json")
 
 if __name__ == "__main__":
     main()

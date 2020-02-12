@@ -12,31 +12,31 @@
             "shortName": "Library"
         }
     ],
-    "id": "4bb23ebd35f0c9b68b03bb83",
+    "id": "4b732e11f964a5203da02de3",
     "location": {
-        "address": "UC Doe Library",
+        "address": "Hearst Annex D-3-5, UC Berkeley",
         "cc": "US",
         "city": "Berkeley",
         "country": "United States",
-        "distance": 777,
+        "distance": 615,
         "formattedAddress": [
-            "UC Doe Library",
+            "Hearst Annex D-3-5, UC Berkeley",
             "Berkeley, CA 94720",
             "United States"
         ],
         "labeledLatLngs": [
             {
                 "label": "display",
-                "lat": 37.87276307462416,
-                "lng": -122.25912226236099
+                "lat": 37.87149685811097,
+                "lng": -122.2576483470391
             }
         ],
-        "lat": 37.87276307462416,
-        "lng": -122.25912226236099,
+        "lat": 37.87149685811097,
+        "lng": -122.2576483470391,
         "postalCode": "94720",
         "state": "CA"
     },
-    "name": "Gardner Main Stacks",
+    "name": "Graduate Student Lounge",
     "photos": {
         "count": 0,
         "groups": []
