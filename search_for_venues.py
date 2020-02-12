@@ -48,7 +48,7 @@ def nearby_venues(location_data, query, radius = 16000, limit = 50):
         print("Explore request failed: {0}".format(e))
         return dict([]) 
 
-def select_venue(venues_data, distribution_generator = None, *args):
+def select_venue(venues_data, *args, p = [], distribution_generator = None):
     """
     Randomly selects a single venue from provided list of venues or reads venue list from specified file. 
 
@@ -56,10 +56,12 @@ def select_venue(venues_data, distribution_generator = None, *args):
     -----------
     venues_data (list / string): Either a list of dictionaries produced by api request, or the name of a .json
         file that stores the venue data. If a string is provided, this function will read from the file.  
-    distribution_generator (function, optional): function that maps venue data to probability distribution. This 
-        distribution is used to select the venue.
     *args (optional): Optional, additional arguments that are passed into distribution_generator along with 
         venues_data.
+    p (list): A list of probabilities, where each probability corresponds with a venue's chance of selection.
+        Must sum to 1. 
+    distribution_generator (function, optional): function that maps venue data to probability distribution. This 
+        distribution is used to select the venue.
     
     Returns:
     --------
@@ -68,11 +70,12 @@ def select_venue(venues_data, distribution_generator = None, *args):
     if type(venues_data) == str: 
         venues_data = read_from_json(venues_data) 
     try:
+        if p:
+            return np.random.choice(venues_data, p = p)
         if distribution_generator != None:
             p = distribution_generator(venues_data, *args)
             return np.random.choice(venues_data, p = p)
-        else:
-            return np.random.choice(venues_data)
+        return np.random.choice(venues_data)
     except Exception as e:
         print("Failed to select venue:", e)
         
@@ -114,7 +117,8 @@ def main():
     data = nearby_venues(location_data, query = "library")
     write_to_json(data, "venues.json")
     original_location = (location_data["latitude"], location_data["longitude"])
-    selected_venue = select_venue("venues.json", latlng_distribution, original_location)
+    p = latlng_distribution(original_location)
+    selected_venue = select_venue("venues.json", p = p)
     write_to_json(selected_venue, "selected_venue.json")
 
 if __name__ == "__main__":
