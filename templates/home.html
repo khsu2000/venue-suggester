@@ -1,5 +1,65 @@
 {% extends "layout.html" %}
 {% block content %}
+
   <h1>Placeholder Title</h1>
   <p>placeholder text here, ostensibly put the form here instead of in suggest.html</p>
+
+  <!-- Form content -->
+  <div class="container main_form">
+    <div class="content-section">
+      <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+          <div class="form-group">
+            {{ form.query.label(class = "form-control-label") }}<br>
+            {{ form.query(class = "form control form-control-lg") }}
+          </div>
+        </fieldset>
+        <div class="form-group">
+          {{ form.submit(class = "btn btn-primary btn-lg btn-block") }}
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Creating area to put venue suggestion -->
+  {% if suggestion_name %}
+  <div class="container suggestion">
+    <div class="content-section">
+      <h3>{{ suggestion_name }}</h3>
+      <p>{{ suggestion_address }}</p>
+
+      {% if next %}
+        <form method="POST" action="">
+          {{ next.hidden_tag() }}
+          <fieldset class="form-group">
+            <div class="form-group">
+              {{ next.next_query(class = "btn btn-primary btn-lg btn-block") }}
+            </div>
+          </fieldset>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if exhausted %}
+    <div class="content-section">
+      <p>Hmm... It seems we're out of options with that given keyword.
+        Try a different search term and search again!
+      </p>
+    </div>
+  {% endif %}
+
+  <style>
+    .main_form{
+      margin: 0 auto;
+      width:80%
+    }
+
+    .suggestion{
+      margin: 0;
+      width: 80%
+    }
+  </style>
 {% endblock content %}
