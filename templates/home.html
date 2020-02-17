@@ -1,20 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
 
-  <h1>Placeholder Title</h1>
-  <p>placeholder text here, ostensibly put the form here instead of in suggest.html</p>
+  <!-- Greeting/Summary Text -->
+  <div class="header-wrapper">
+    <h1 class="text-center">Placeholder Title</h1>
+    <p class="text-center">placeholder text here, ostensibly put the form here instead of in suggest.html</p>
+  </div>
 
   <!-- Form content -->
   <div class="container main_form">
     <div class="content-section">
       <form method="POST" action="">
         {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-          <div class="form-group">
-            {{ form.query.label(class = "form-control-label") }}<br>
-            {{ form.query(class = "form control form-control-lg") }}
-          </div>
-        </fieldset>
+        <div class="form-group">
+          {{ form.query.label(class = "form-control-label") }}<br>
+          {{ form.query(class = "form-control-lg", placeholder = "Enter a search keyword here") }}
+        </div>
         <div class="form-group">
           {{ form.submit(class = "btn btn-primary btn-lg btn-block") }}
         </div>
@@ -24,17 +25,17 @@
 
   <!-- Creating area to put venue suggestion -->
   {% if suggestion_name %}
-  <div class="container suggestion">
+  <div class="container output">
     <div class="content-section">
       <h3>{{ suggestion_name }}</h3>
       <p>{{ suggestion_address }}</p>
-
+      <!-- Next button -->
       {% if next %}
         <form method="POST" action="">
           {{ next.hidden_tag() }}
           <fieldset class="form-group">
-            <div class="form-group">
-              {{ next.next_query(class = "btn btn-primary btn-lg btn-block") }}
+            <div class="form-group text-center">
+              {{ next.next_query(class = "btn btn-secondary btn-lg text-center") }}
             </div>
           </fieldset>
         </form>
@@ -44,10 +45,12 @@
   {% endif %}
 
   {% if exhausted %}
-    <div class="content-section">
-      <p>Hmm... It seems we're out of options with that given keyword.
-        Try a different search term and search again!
-      </p>
+    <div class="container output">
+      <div class="content-section">
+        <p>Hmm... We found no remaining options with that given keyword.
+          Try a different search term and search again!
+        </p>
+      </div>
     </div>
   {% endif %}
 
@@ -57,9 +60,22 @@
       width:80%
     }
 
-    .suggestion{
-      margin: 0;
-      width: 80%
+    .output{
+      margin: 0 auto;
+      margin-top: 5%;
+      width: 70%
+    }
+
+    .header-wrapper{
+      margin: 0 auto;
+      margin-top: 5%;
+      margin-bottom: 5%;
+      width: 50%
+    }
+
+    .form-control-lg{
+      box-sizing:border-box;
+      width:100%
     }
   </style>
 {% endblock content %}

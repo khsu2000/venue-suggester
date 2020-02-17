@@ -25,6 +25,7 @@ def nearby_venues(location_data, query, radius = 16000, limit = 50):
     --------
     list: List of Venue objects with data from GET request. Upon failure, returns empty list.
     """
+    print("making api query")
     try:
         url = "https://api.foursquare.com/v2/venues/explore"
         year = location_data["timestamp"][0:4]
@@ -42,6 +43,7 @@ def nearby_venues(location_data, query, radius = 16000, limit = 50):
             openNow = 1
         )
         resp = requests.get(url = url, params = params)
+        # pprint(json.loads(resp.text))
         data = dicts_to_venues(json.loads(resp.text)["response"]["groups"][0]["items"])
         return data
     except Exception as e:

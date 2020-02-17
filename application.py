@@ -26,11 +26,11 @@ query = ""
 Form Class for Main Page
 """
 class TakeQuery(FlaskForm):
-    query = StringField("Any Ideas ig?", validators = [validators.DataRequired()])
+    query = StringField("What's in store today?", validators = [validators.DataRequired()])
     submit = SubmitField("Go bears!!!!!")
 
 class NextVenue(FlaskForm):
-    next_query = SubmitField("Hmm... That's Not It")
+    next_query = SubmitField("That's Not It. Another one!")
 
 @app.route("/home")
 @app.route("/", methods = ["POST", "GET"])
@@ -55,25 +55,16 @@ def home():
             venues = nearby_venues(location_data, query)
             venues = distance_weighted_order(venues, original_location)
             if venues == []:
-                print(1)
                 return render_template("home.html", form = form, exhausted = True)
-        if len(venues) == 0:
-            print(2)
-            return render_template("home.html", form = form, exhausted = True)
         suggested = venues.pop(0)
-        print(3)
         return render_template("home.html", form = form, next = next, suggestion_name = suggested.get_name(), suggestion_address = suggested.get_address())
     if next.validate_on_submit():
         if len(venues) == 0 and query != "":
-            print(4)
             return render_template("home.html", form = form, exhausted = True)
         elif len(venues) == 0:
-            print(5)
             return render_template("home.html", form = form)
         suggested = venues.pop(0)
-        print(6)
         return render_template("home.html", form = form, next = next, suggestion_name = suggested.get_name(), suggestion_address = suggested.get_address())
-    print(7)
     return render_template("home.html", form = form)
 
 @app.route("/about", methods = ["POST", "GET"])
