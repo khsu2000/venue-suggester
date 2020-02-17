@@ -24,12 +24,12 @@
   </div>
 
   <!-- Creating area to put venue suggestion -->
-  {% if suggestion_name %}
+  {% if suggested %}
   <div class="container output">
     <div class="content-section">
-      <h3>{{ suggestion_name }}</h3>
-      <p>{{ suggestion_address }}</p>
-      <!-- Next button -->
+      <h3>{{ suggested.get_name() }}</h3>
+      <p>{{ suggested.get_address() }}</p>
+      <!-- Next button (assumes has available venues) -->
       {% if next %}
         <form method="POST" action="">
           {{ next.hidden_tag() }}
@@ -42,28 +42,40 @@
       {% endif %}
     </div>
   </div>
-  {% endif %}
-
-  {% if exhausted %}
-    <div class="container output">
-      <div class="content-section">
-        <p>Hmm... We found no remaining options with that given keyword.
-          Try a different search term and search again!
-        </p>
+  {% else %}
+    <!-- Display text indicating no available venues -->
+    {% if exhausted %}
+      <div class="container output">
+        <div class="content-section">
+          <p>Hmm... We found no remaining options with that given keyword. Try a different search term and search again!
+          </p>
+        </div>
       </div>
-    </div>
+    {% endif %}
+    <!-- API Usage Exceeded Error -->
+    {% if exceeded %}
+      <div class="container output">
+        <div class="content-section">
+          <p>Uh oh, it seems like the free-tier account I'm using for API requests has exceeded its daily limit.
+            Developing this webapp as a college student, I'm really not planning on putting money into
+            a personal project. Try coming back in a couple hours! The request count refreshes every 12:00 AM UTC.
+            Sorry about the inconvenience!
+          </p>
+        </div>
+      </div>
+    {% endif %}
   {% endif %}
 
   <style>
     .main_form{
       margin: 0 auto;
-      width:80%
+      width:70%
     }
 
     .output{
       margin: 0 auto;
       margin-top: 5%;
-      width: 70%
+      width: 60%
     }
 
     .header-wrapper{

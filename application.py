@@ -53,19 +53,19 @@ def home():
         while len(venues) == 0:
             query = form.query.data
             venues = nearby_venues(location_data, query)
+            if venues == "API Usage Exceeded":
+                return render_template("home.html", form = form, suggested = None, exhausted = False, exceeded = True)
             venues = distance_weighted_order(venues, original_location)
             if venues == []:
-                return render_template("home.html", form = form, exhausted = True)
+                return render_template("home.html", form = form, suggested = None, exhausted = False)
         suggested = venues.pop(0)
-        return render_template("home.html", form = form, next = next, suggestion_name = suggested.get_name(), suggestion_address = suggested.get_address())
+        return render_template("home.html", form = form, next = next, suggested = suggested)
     if next.validate_on_submit():
-        if len(venues) == 0 and query != "":
-            return render_template("home.html", form = form, exhausted = True)
-        elif len(venues) == 0:
-            return render_template("home.html", form = form)
+        if len(venues) == 0:
+            return render_template("home.html", form = form, suggested = None, exhausted = True)
         suggested = venues.pop(0)
-        return render_template("home.html", form = form, next = next, suggestion_name = suggested.get_name(), suggestion_address = suggested.get_address())
-    return render_template("home.html", form = form)
+        return render_template("home.html", form = form, next = next, suggested = suggested)
+    return render_template("home.html", form = form, suggested = None, exhausted = False)
 
 @app.route("/about", methods = ["POST", "GET"])
 def about():

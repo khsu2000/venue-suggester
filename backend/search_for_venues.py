@@ -43,8 +43,10 @@ def nearby_venues(location_data, query, radius = 16000, limit = 50):
             openNow = 1
         )
         resp = requests.get(url = url, params = params)
-        # pprint(json.loads(resp.text))
-        data = dicts_to_venues(json.loads(resp.text)["response"]["groups"][0]["items"])
+        resp_loaded = json.loads(resp.text)
+        if resp_loaded["meta"]["code"] == 429:
+            return "API Usage Exceeded"
+        data = dicts_to_venues(resp_loaded["response"]["groups"][0]["items"])
         return data
     except Exception as e:
         print("Explore request failed: {0}".format(e))
