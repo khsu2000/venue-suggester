@@ -9,9 +9,11 @@ import json
 import requests
 from utils import write_to_json, read_from_json, Venue, venues_to_dicts, dicts_to_venues
 
+fs_versioning_date = "20200316"
+
 def nearby_venues(location_data, query, radius = 16000, limit = 50):
     """
-    Makes request to Foursquare Places explore and returns the results.
+    Makes request to 'explore' endpoint of Foursquare places API and returns the results.
 
     Parameters:
     -----------
@@ -25,18 +27,14 @@ def nearby_venues(location_data, query, radius = 16000, limit = 50):
     --------
     list: List of Venue objects with data from GET request. Upon failure, returns empty list.
     """
-    print("making api query")
     try:
         url = "https://api.foursquare.com/v2/venues/explore"
-        year = location_data["timestamp"][0:4]
-        month = location_data["timestamp"][5:7]
-        day = location_data["timestamp"][8:10]
         params = dict(
             client_id = config.foursquare_client_id,
             client_secret = config.foursquare_client_secret,
             ll = ",".join([str(location_data["latitude"]), str(location_data["longitude"])]),
             near = location_data["city"],
-            v = "".join([year, month, day]),
+            v = fs_versioning_date,
             radius = radius,
             query = query,
             limit = limit,
@@ -51,6 +49,37 @@ def nearby_venues(location_data, query, radius = 16000, limit = 50):
     except Exception as e:
         print("Explore request failed: {0}".format(e))
         return []
+
+def get_details(venue):
+    """
+    Given Venue object to get more information about, makes request to 'details' endpoint of 
+    Foursquare places API using the object's 'id' attribute and places the output of the request 
+    in the Venue object's 'details' attribute.
+
+    Parameters:
+    -----------
+    venue (Venue object): Venue to get the details of. Puts the returned results into the 
+        'details' attribute of the object. 
+
+    Returns:
+    --------
+    None (if API usage is exceeded, return 'API Usage Exceeded' as string). 
+    """
+    try: 
+        url = "".join(["https://api.foursquare.com/v2/venues/", venue.get_id()])
+        params = dict(
+            VENUE_ID = venue.get_id(), 
+            client_id = config.foursquare_client_id,
+            client_secret = config.foursquare_client_secret,
+            v = fs_versioning_date
+        )
+        resp = requests.get(url = url, params = params)
+        resp_loaded = json.loads(resp.text)
+        if resp_loaded["meta"]["code"] == 429:
+            return "API Usage Exceeded"
+        venue.details = resp_loaded["response"]["venue"]
+    except Exception as e:
+        print("details request failed: {0}".format(e))
 
 def latlng_distribution(venues_data, original_location, smoothing_coeff = 0.25):
     """
@@ -117,8 +146,16 @@ def distance_weighted_order(venues_data, original_location, smoothing_coeff = 0.
 
 def main():
     location_data = read_from_json("location_data.json")
-    venues_list = nearby_venues(location_data, query = "can't possibly be valid")
+    venues_list = nearby_venues(location_data, query = "bar")
     original_location = (location_data["latitude"], location_data["longitude"])
+    for venue in venues_list:
+        get_details(venue)
+        print("\nvenue: " + str(venue))
+        print("description: " + str(venue.get_description()))
+        print("url: " + str(venue.get_url()))
+        print("canonical: " + str(venue.get_canonical_url()))
+        print("rating: " + str(venue.get_rating()))
+        print("contacts: " + str(venue.get_contacts()))
     write_to_json(venues_to_dicts(venues_list), "venues.json")
     write_to_json(venues_to_dicts(distance_weighted_order(venues_list, original_location)), "reordered_venues.json")
 

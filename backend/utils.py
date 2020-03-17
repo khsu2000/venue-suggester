@@ -12,6 +12,12 @@ class Venue:
         self.id = venue_dictionary["id"]
         self.location = venue_dictionary["location"]
         self.name = venue_dictionary["name"]
+        self.details = None
+        self.description = None 
+        self.url = None 
+        self.canonical_url = None 
+        self.rating = None 
+        self.contacts = None 
 
     def get_name(self):
         # Returns name (string)
@@ -33,12 +39,81 @@ class Venue:
         # Returns formatted address (list of strings)
         return self.location["formattedAddress"]
 
+    def get_description(self):
+        # Returns provided description extracted from details (string)
+        # Returns empty string if 'details' is None or no description provided
+        if self.description != None:
+            return self.description
+        if self.details == None or not self.details.get("description", None):
+            self.description = ""
+        else:
+            self.description = self.details["description"]
+        return self.description
+
+    def get_url(self):
+        # Returns provided url extracted from details (string) 
+        # Returns empty string if 'details' is None or no url provided
+        if self.url != None: 
+            return self.url 
+        if self.details == None or not self.details.get("url", None):
+            self.url = ""
+        else:
+            self.url = self.details["url"]
+        return self.url
+
+    def get_canonical_url(self):
+        # Returns provided canonical url extracted from details (string) 
+        # Returns empty string if 'details' is None or no canonical url provided
+        if self.canonical_url != None:
+            return self.canonical_url
+        if self.details == None or not self.details.get("canonicalUrl", None):
+            self.canonical_url = ""
+        else:
+            self.canonical_url = self.details["canonicalUrl"]
+        return self.canonical_url
+
+    def get_rating(self):
+        # Returns provided rating extracted from details (int)
+        # Returns -1 if 'details' is None or no rating provided
+        if self.rating != None:
+            return self.rating
+        if self.details == None:
+            self.rating = -1
+        else:
+            self.rating = self.details.get("rating", -1)
+        return self.rating
+
+    def get_contacts(self):
+        # Returns dictionary of contact links and phone number (string, string) 
+        # Returns empty dictionary if 'details' is None or no contacts provided
+        if self.contacts != None:
+            return self.contacts
+        if self.details == None or not self.details.get("contact", None):
+            self.contacts = {"Facebook": "",
+                "Twitter": "", 
+                "Instagram": "",
+                "Phone Number": ""}
+        else: 
+            self.contacts = {}
+            media_prefixes = ["https://www.facebook.com/", "https://twitter.com/", "https://www.instagram.com/"]
+            old_media_keys = ["facebookUsername", "twitter", "instagram"]
+            new_media_keys = ["Facebook", "Twitter", "Instagram"] 
+            for i in range(3):
+                media_contact = self.details["contact"].get(old_media_keys[i], "")
+                if media_contact:
+                    self.contacts[new_media_keys[i]] = "".join([media_prefixes[i], media_contact])
+                else:
+                    self.contacts[new_media_keys[i]] = ""
+            self.contacts["Phone Number"] = self.details["contact"].get("formattedPhone", "")
+        return self.contacts
+
     def to_dict(self):
         # Returns dictionary representation of Venue object.
         return {
-            "id" : self.id,
-            "location" : self.location,
-            "name" : self.name}
+            "id": self.id,
+            "location": self.location,
+            "name": self.name
+        }
 
     def __str__(self):
         return "Venue(id = {0}, address = {1}, name = {2})".format(self.id, self.get_address(), self.name)
