@@ -133,8 +133,9 @@ def distance_weighted_order(venues_data, original_location, smoothing_coeff = 0.
     """
     p = latlng_distribution(venues_data, original_location, smoothing_coeff)
     if len(set(p)) == 1:
-        venues_data = venues_data.copy()
-        return np.random.shuffle(venues_data)
+        venues_data_cpy = venues_data.copy()
+        np.random.shuffle(venues_data_cpy)
+        return venues_data_cpy
     d = dict(zip(venues_data, p))
     reordered = []
     while len(reordered) < len(venues_data):
