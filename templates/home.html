@@ -1,93 +1,112 @@
 {% extends "layout.html" %}
 {% block content %}
 
-  <!-- Greeting/Summary Text -->
-  <div class="header-wrapper">
-    <h1 class="text-center">Placeholder Title</h1>
-    <p class="text-center">placeholder text here, ostensibly put the form here instead of in suggest.html</p>
-  </div>
+<!-- Greeting/Summary Text -->
+<div class="header-wrapper">
+  <h1 class="text-center">Placeholder Title</h1>
+  <p class="text-center">placeholder text here, ostensibly put the form here instead of in suggest.html</p>
+</div>
 
-  <!-- Form content -->
-  <div class="container main_form">
-    <div class="content-section">
-      <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-          {{ form.query.label(class = "form-control-label") }}<br>
-          {{ form.query(class = "form-control-lg", placeholder = "Enter a search keyword here") }}
-        </div>
-        <div class="form-group">
-          {{ form.submit(class = "btn btn-primary btn-lg btn-block") }}
-        </div>
-      </form>
+<!-- Form content -->
+<div class="container main_form">
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.query.label(class = "form-control-label") }}<br>
+      {{ form.query(class = "form-control-lg", placeholder = "Enter a search keyword here") }}
     </div>
-  </div>
+    <div class="form-group">
+      {{ form.submit(class = "btn btn-primary btn-lg btn-block") }}
+    </div>
+  </form>
+</div>
 
-  <!-- Creating area to put venue suggestion -->
-  {% if suggested %}
+<!-- Area to put venue suggestion -->
+{% if suggested %}
   <div class="container output">
-    <div class="content-section">
-      <h3>{{ suggested.get_name() }}</h3>
-      <p>{{ suggested.get_address() }}</p>
-      <!-- Next button (assumes has available venues) -->
-      {% if next %}
-        <form method="POST" action="">
-          {{ next.hidden_tag() }}
+    <h3>{{ suggested.get_name() }}</h3>                                                     <!-- Name of venue -->
+    <p>Address: <a href={{ suggested.get_maps_link() }} target="_blank">
+      {{ ", ".join(suggested.get_address()[:-1]) }}</a></p>                                 <!-- Address of venue -->
+    <p>Description:</p>
+    {% if suggested.get_description() %}
+      <p>{{ suggested.get_description() }}</p>
+    {% else %}
+      <p>No description provided.</p> 
+    {% endif %}
+    {% if suggested.get_url() %}                                                            <!-- Linked website URL -->
+      <p>Website: <a href={{ suggested.get_url() }} target="_blank">
+        {{ suggested.get_url() }}</a></p>
+    {% endif %}
+    {% if suggested.get_rating() != -1 %}                                                   <!-- Foursquare rating -->
+      <p>Foursquare rating: {{ suggested.get_rating() }}</p>
+    {% endif %}
+    <p>Read reviews from Foursquare
+      <a href={{ suggested.get_canonical_url() }} target="_blank">here</a>.</p>             <!-- Foursquare canonical link -->
+    <p>Contact Information:</p>
+    {% if suggested.get_contacts() %}                                                       <!-- Contact information -->
+      {% for contact in ["Facebook", "Twitter", "Instagram", "Phone Number"] %}
+        {% if suggested.get_contacts().get(contact, None) %}
+          <p>{{ contact }}: {{suggested.get_contacts()[contact] }}</p>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <p>No contact information provided.</p>
+    {% endif %}
+
+    <!-- Next button to get next venue in list of suggestions -->
+    {% if next_venue %}
+      <form method="POST" action="">
+        {{ next_venue.hidden_tag() }}
           <fieldset class="form-group">
             <div class="form-group text-center">
-              {{ next.next_query(class = "btn btn-secondary btn-lg text-center") }}
+              {{ next_venue.next_query(class = "btn btn-secondary btn-lg text-center") }}
             </div>
           </fieldset>
-        </form>
-      {% endif %}
-    </div>
+      </form>
+    {% endif %}
   </div>
-  {% else %}
-    <!-- Display text indicating no available venues -->
-    {% if exhausted %}
-      <div class="container output">
-        <div class="content-section">
-          <p>Hmm... We found no remaining options with that given keyword. Try a different search term and search again!
-          </p>
-        </div>
-      </div>
-    {% endif %}
-    <!-- API Usage Exceeded Error -->
-    {% if exceeded %}
-      <div class="container output">
-        <div class="content-section">
-          <p>Uh oh, it seems like the free-tier account I'm using for API requests has exceeded its daily limit.
-            Developing this webapp as a college student, I'm really not planning on putting money into
-            a personal project. Try coming back in a couple hours! The request count refreshes every 12:00 AM UTC.
-            Sorry about the inconvenience!
-          </p>
-        </div>
-      </div>
-    {% endif %}
+
+<!-- Display text indicating no available venues -->
+{% else %}
+  {% if exhausted %}
+    <div class="container output">
+      <p>Hmm... We found no more available options with that given keyword. Try a different search term and search again!</p>
+    </div>
+  {% endif %}
+  <!-- API Usage Exceeded Error -->
+  {% if exceeded %}
+    <div class="container output">
+      <p>Uh oh, it seems like the free-tier account I'm using for API requests has exceeded its daily limit.
+        Unfortunately, I'm really not planning on putting money into this personal project, 
+        so try coming back in a couple hours! The request count refreshes every 12:00 AM UTC.
+        Sorry about the inconvenience!</p>
+    </div>
   {% endif %}
 
-  <style>
-    .main_form{
-      margin: 0 auto;
-      width:70%
-    }
+{% endif %}
 
-    .output{
-      margin: 0 auto;
-      margin-top: 5%;
-      width: 60%
-    }
+<style>
+.main_form{
+  margin: 0 auto;
+  width:70%
+}
 
-    .header-wrapper{
-      margin: 0 auto;
-      margin-top: 5%;
-      margin-bottom: 5%;
-      width: 50%
-    }
+.output{
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 60%
+}
 
-    .form-control-lg{
-      box-sizing:border-box;
-      width:100%
-    }
-  </style>
+.header-wrapper{
+  margin: 0 auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 50%
+}
+
+.form-control-lg{
+  box-sizing:border-box;
+  width:100%
+}
+</style>
 {% endblock content %}

@@ -2,6 +2,7 @@
 Utility functions and classes.
 """
 import json
+from urllib.parse import quote
 
 class Venue:
     """
@@ -88,12 +89,8 @@ class Venue:
         # Returns empty dictionary if 'details' is None or no contacts provided
         if self.contacts != None:
             return self.contacts
-        if self.details == None or not self.details.get("contact", None):
-            self.contacts = {"Facebook": "",
-                "Twitter": "", 
-                "Instagram": "",
-                "Phone Number": ""}
-        else: 
+        self.contacts = {}
+        if self.details != None and self.details.get("contact", None):
             self.contacts = {}
             media_prefixes = ["https://www.facebook.com/", "https://twitter.com/", "https://www.instagram.com/"]
             old_media_keys = ["facebookUsername", "twitter", "instagram"]
@@ -102,10 +99,14 @@ class Venue:
                 media_contact = self.details["contact"].get(old_media_keys[i], "")
                 if media_contact:
                     self.contacts[new_media_keys[i]] = "".join([media_prefixes[i], media_contact])
-                else:
-                    self.contacts[new_media_keys[i]] = ""
             self.contacts["Phone Number"] = self.details["contact"].get("formattedPhone", "")
         return self.contacts
+
+    def get_maps_link(self):
+        # Returns google maps link (string) 
+        full_address = ", ".join(self.get_address())
+        query = quote(" ".join([self.name, full_address]))
+        return "".join(["https://www.google.com/maps/search/?api=1&query=", query])
 
     def to_dict(self):
         # Returns dictionary representation of Venue object.
