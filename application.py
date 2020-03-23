@@ -21,6 +21,13 @@ location_data = {}
 venues = []
 original_location = ()
 query = ""
+suggested_index = 0
+
+"""
+Constants for Errors 
+"""
+API_REQUEST = 0
+NO_VENUES = 1
 
 """
 Form Class for Main Page
@@ -42,6 +49,7 @@ def home():
     global venues
     global original_location
     global query
+    global suggested_index
         
     # Instantiation of forms 
     form = TakeQuery()
@@ -67,32 +75,50 @@ def home():
             venues = nearby_venues(location_data, query)
             if venues == "API Usage Exceeded":
                 # Case that API does not allow new requests, nothing to do 
-                return render_template("home.html", form = form, suggested = None, exhausted = False, exceeded = True)
+                return render_template("home.html", form = form, error_status = API_REQUEST)
             if venues == []:
                 # Case that there are no venues found 
-                return render_template("home.html", form = form, suggested = None, exhausted = True)
+                return render_template("home.html", form = form, error_status = NO_VENUES)
             venues = distance_weighted_order(venues, original_location)
-        
+
         # Successfully acquired list of venues at this point 
-        suggested = venues.pop(0)
+        suggested_index = 0
+        suggested = venues[suggested_index]
         if get_details(suggested) == "API Usage Exceeded":
             # Case that API does not allow new requests, nothing to do 
-            return render_template("home.html", form = form, suggested = None, exhausted = False, exceeded = True)
+            return render_template("home.html", form = form, error_status = API_REQUEST)
+        if len(venues) == 1:
+            return render_template("home.html", form = form, suggested = suggested)
         return render_template("home.html", form = form, next_venue = next_venue, suggested = suggested)
 
-    if next_venue.validate_on_submit():
-        # Case where 'next venue' button is clicked
-        if len(venues) == 0:
-            # Case where there are no more venues remaining 
-            return render_template("home.html", form = form, suggested = None, exhausted = True)
-        suggested = venues.pop(0)
+    if prev_venue.prev_query.data and prev_venue.validate():
+        # Case where 'prev venue' button is clicked
+        if suggested_index <= 1:
+            # Case where there are no prev venues following this query
+            suggested_index = max(suggested_index - 1, 0)
+            return render_template("home.html", form = form, next_venue = next_venue, suggested = venues[suggested_index])
+        suggested_index -= 1
+        suggested = venues[suggested_index]
         if get_details(suggested) == "API Usage Exceeded":
             # Case that API does not allow new requests, nothing to do 
-            return render_template("home.html", form = form, suggested = None, exhausted = False, exceeded = True)
-        return render_template("home.html", form = form, next_venue = next_venue, suggested = suggested)
+            return render_template("home.html", form = form, error_status = API_REQUEST)
+        return render_template("home.html", form = form, prev_venue = prev_venue, next_venue = next_venue, suggested = suggested)
+
+    if next_venue.next_query.data and next_venue.validate():
+        # Case where 'next venue' button is clicked
+        if suggested_index >= len(venues) - 2:
+            # Case where there are no next venues following this query
+            suggested_index = min(suggested_index + 1, len(venues) - 1)
+            return render_template("home.html", form = form, prev_venue = prev_venue, suggested = venues[suggested_index])
+        suggested_index += 1
+        suggested = venues[suggested_index]
+        if get_details(suggested) == "API Usage Exceeded":
+            # Case that API does not allow new requests, nothing to do 
+            return render_template("home.html", form = form, error_status = API_REQUEST)
+        return render_template("home.html", form = form, prev_venue = prev_venue, next_venue = next_venue, suggested = suggested)
 
     # Default case where neither button has been clicked
-    return render_template("home.html", form = form, suggested = None, exhausted = False)
+    return render_template("home.html", form = form)
 
 @app.route("/about", methods = ["POST", "GET"])
 def about():

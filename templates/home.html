@@ -7,7 +7,7 @@
   <p class="text-center">placeholder text here, ostensibly put the form here instead of in suggest.html</p>
 </div>
 
-<!-- Form content -->
+<!-- Entry for keyword -->
 <div class="container main_form">
   <form method="POST" action="">
     {{ form.hidden_tag() }}
@@ -55,7 +55,7 @@
 
     <!-- Next button to get next venue in list of suggestions -->
     {% if next_venue %}
-      <form method="POST" action="">
+      <form id="next_venue" method="POST" action="">
         {{ next_venue.hidden_tag() }}
           <fieldset class="form-group">
             <div class="form-group text-center">
@@ -64,25 +64,32 @@
           </fieldset>
       </form>
     {% endif %}
+
+    <!-- Prev button to get prev venue in list of suggestions -->
+    {% if prev_venue %}
+      <form id="prev_venue" method="POST" action="">
+        {{ prev_venue.hidden_tag() }}
+          <fieldset class="form-group">
+            <div class="form-group text-center">
+              {{ prev_venue.prev_query(class = "btn btn-secondary btn-lg text-center") }}
+            </div>
+          </fieldset>
+      </form>
+    {% endif %}
   </div>
 
 <!-- Display text indicating no available venues -->
 {% else %}
-  {% if exhausted %}
-    <div class="container output">
-      <p>Hmm... We found no more available options with that given keyword. Try a different search term and search again!</p>
-    </div>
-  {% endif %}
-  <!-- API Usage Exceeded Error -->
-  {% if exceeded %}
-    <div class="container output">
+  <div class="container output">
+    {% if error_status == 0 %}
       <p>Uh oh, it seems like the free-tier account I'm using for API requests has exceeded its daily limit.
-        Unfortunately, I'm really not planning on putting money into this personal project, 
-        so try coming back in a couple hours! The request count refreshes every 12:00 AM UTC.
+        Try coming back in a couple hours. The request count refreshes every 12:00 AM UTC.
         Sorry about the inconvenience!</p>
-    </div>
-  {% endif %}
-
+    {% elif error_status == 1 %}
+      <p>Hmm... We found no available options with that given keyword. Try a different search term and search again!</p>
+    {% endif %}
+  </div>
+  
 {% endif %}
 
 <style>
@@ -109,4 +116,5 @@
   width:100%
 }
 </style>
+
 {% endblock content %}
