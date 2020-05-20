@@ -19,6 +19,7 @@ class Venue:
         self.canonical_url = None 
         self.rating = None 
         self.contacts = None 
+        self.hours = None
 
     def get_name(self):
         # Returns name (string)
@@ -39,6 +40,20 @@ class Venue:
     def get_address(self):
         # Returns formatted address (list of strings)
         return self.location["formattedAddress"]
+
+    def get_hours(self):
+        # Returns string in the form of Open "day range" from "time range".
+        # Returns empty string if day range or time range not found 
+        if self.hours != None:
+            return self.hours
+        if self.details == None:
+            return ""
+        days = self.details.get("hours", {}).get("timeframes", [{}])[0].get("days", "")
+        hours = self.details.get("hours", {}).get("timeframes", [{}])[0].get("open", [{}])[0].get("renderedTime", "")
+        if not days or not hours:
+            return ""
+        self.hours = "".join(["Open ", days, " for/from ", hours, "."])
+        return self.hours
 
     def get_description(self):
         # Returns provided description extracted from details (string)
@@ -100,6 +115,11 @@ class Venue:
                 if media_contact:
                     self.contacts[new_media_keys[i]] = "".join([media_prefixes[i], media_contact])
             self.contacts["Phone Number"] = self.details["contact"].get("formattedPhone", "")
+            unformatted_number = self.details["contact"].get("phone", "")
+            if len(unformatted_number) == 10:
+                self.contacts["Phone Number href"] = "".join([unformatted_number[0:3], "-", unformatted_number[3:6], "-", unformatted_number[6:]])
+            else:
+                self.contacts["Phone Number href"] = ""
         return self.contacts
 
     def get_maps_link(self):

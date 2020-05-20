@@ -34,7 +34,7 @@ Form Class for Main Page
 """
 class TakeQuery(FlaskForm):
     query = StringField("What's in store today?", validators = [validators.DataRequired()])
-    submit = SubmitField("Go bears!!!!!")
+    submit = SubmitField("Give me some suggestions!")
 
 class NextVenue(FlaskForm):
     next_query = SubmitField("Next Suggestion")

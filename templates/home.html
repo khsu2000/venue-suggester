@@ -3,12 +3,12 @@
 
 <!-- Greeting/Summary Text -->
 <div class="header-wrapper">
-  <h1 class="text-center">Placeholder Title</h1>
-  <p class="text-center">placeholder text here, ostensibly put the form here instead of in suggest.html</p>
+  <h1 class="text-center">Venue Suggester</h1>
+  <p class="text-center">Enter some keywords about what type of venues you would like to see and press the button underneath!</p>
 </div>
 
 <!-- Entry for keyword -->
-<div class="container main_form">
+<div class="container main-form">
   <form method="POST" action="">
     {{ form.hidden_tag() }}
     <div class="form-group">
@@ -24,59 +24,95 @@
 <!-- Area to put venue suggestion -->
 {% if suggested %}
   <div class="container output">
-    <h3>{{ suggested.get_name() }}</h3>                                                     <!-- Name of venue -->
-    <p>Address: <a href={{ suggested.get_maps_link() }} target="_blank">
-      {{ ", ".join(suggested.get_address()[:-1]) }}</a></p>                                 <!-- Address of venue -->
-    <p>Description:</p>
+    <h3>{{ suggested.get_name() }}</h3>                                                      <!-- Name of venue -->
+    <dl>
+    <dt>Address:</dt>
+    <dd><a href={{ suggested.get_maps_link() }} target="_blank">
+      {{ ", ".join(suggested.get_address()[:-1]) }}</a></dd>                                 <!-- Address of venue -->
+  <dt>Hours:</dt>                                                                            <!-- Hours of operation -->
+    <dd>{{ suggested.get_hours() }}</dd>
+    <dt>Description:</dt>
     {% if suggested.get_description() %}
-      <p>{{ suggested.get_description() }}</p>
+      <dd>{{ suggested.get_description() }}</dd>
     {% else %}
-      <p>No description provided.</p> 
+      <dd>No description provided.</dd> 
     {% endif %}
-    {% if suggested.get_url() %}                                                            <!-- Linked website URL -->
-      <p>Website: <a href={{ suggested.get_url() }} target="_blank">
-        {{ suggested.get_url() }}</a></p>
+    {% if suggested.get_url() %}                                                             <!-- Linked website URL -->
+      <dt>Website:</dt>
+      <dd><a href={{ suggested.get_url() }} target="_blank">
+        {{ suggested.get_url() }}</a></dd>
     {% endif %}
-    {% if suggested.get_rating() != -1 %}                                                   <!-- Foursquare rating -->
-      <p>Foursquare rating: {{ suggested.get_rating() }}</p>
+    <dt>Foursquare Reviews and Ratings:</dt>
+    {% if suggested.get_rating() != -1 %}                                                    <!-- Foursquare rating -->
+    <dd>Average rating: <span class="rating">{{ suggested.get_rating() }} / 10.0</span></dd>
     {% endif %}
-    <p>Read reviews from Foursquare
-      <a href={{ suggested.get_canonical_url() }} target="_blank">here</a>.</p>             <!-- Foursquare canonical link -->
-    <p>Contact Information:</p>
-    {% if suggested.get_contacts() %}                                                       <!-- Contact information -->
+    <dd>Read reviews from Foursquare
+      <a href={{ suggested.get_canonical_url() }} target="_blank">here</a>.</dd>             <!-- Foursquare canonical link -->
+    <dt>Contact Information:</dt>
+    {% if suggested.get_contacts() %}                                                        <!-- Contact information -->
+      <ul>
       {% for contact in ["Facebook", "Twitter", "Instagram", "Phone Number"] %}
         {% if suggested.get_contacts().get(contact, None) %}
-          <p>{{ contact }}: {{suggested.get_contacts()[contact] }}</p>
+          {% if contact == "Phone Number" %}
+            {% if suggested.get_contacts()["Phone Number href"] %}
+              <li>{{ contact }}: <a href={{ "".join(["tel:", suggested.get_contacts()["Phone Number href"]]) }} target="_blank">
+                {{ suggested.get_contacts()[contact] }}</a></li>
+            {% else %}
+              <li>{{ contact }}: {{ suggested.get_contacts()[contact] }}</li>
+            {% endif %}
+          {% else %}
+            <li>{{ contact }}: <a href={{ suggested.get_contacts()[contact] }} target="_blank">
+              {{ suggested.get_contacts()[contact] }}</a></li>
+          {% endif %}
         {% endif %}
       {% endfor %}
+      </ul>
     {% else %}
       <p>No contact information provided.</p>
     {% endif %}
+    </dl>
 
-    <!-- Next button to get next venue in list of suggestions -->
-    {% if next_venue %}
-      <form id="next_venue" method="POST" action="">
-        {{ next_venue.hidden_tag() }}
-          <fieldset class="form-group">
-            <div class="form-group text-center">
-              {{ next_venue.next_query(class = "btn btn-secondary btn-lg text-center") }}
-            </div>
-          </fieldset>
-      </form>
-    {% endif %}
-
-    <!-- Prev button to get prev venue in list of suggestions -->
-    {% if prev_venue %}
-      <form id="prev_venue" method="POST" action="">
-        {{ prev_venue.hidden_tag() }}
+    <div class="next-prev-container">
+      <!-- Prev button to get prev venue in list of suggestions -->
+      {% if prev_venue %}
+        <form id="prev_venue" class="next-prev-btn" method="POST" action="">
+          {{ prev_venue.hidden_tag() }}
           <fieldset class="form-group">
             <div class="form-group text-center">
               {{ prev_venue.prev_query(class = "btn btn-secondary btn-lg text-center") }}
             </div>
           </fieldset>
-      </form>
-    {% endif %}
+        </form>
+      {% endif %}
+      <!-- Next button to get next venue in list of suggestions -->
+      {% if next_venue %}
+        <form id="next_venue" class="next-prev-btn" method="POST" action="">
+          {{ next_venue.hidden_tag() }}
+          <fieldset class="form-group">
+            <div class="form-group text-center">
+              {{ next_venue.next_query(class = "btn btn-secondary btn-lg text-center") }}
+            </div>
+          </fieldset>
+        </form>
+      {% endif %}
+    </div>
   </div>
+
+  <style>
+    {% if suggested.get_rating() >= 6 %}
+    .rating{
+      color: #00b551
+    }
+    {% elif suggested.get_rating() >= 3 %}
+    .rating{
+      color: #ffcc00
+    }
+    {% else %}
+    .rating{
+      color: #cc3300
+    }
+    {% endif %}
+  </style>
 
 <!-- Display text indicating no available venues -->
 {% else %}
@@ -93,9 +129,9 @@
 {% endif %}
 
 <style>
-.main_form{
+.main-form{
   margin: 0 auto;
-  width:70%
+  width: 70%
 }
 
 .output{
@@ -108,12 +144,21 @@
   margin: 0 auto;
   margin-top: 5%;
   margin-bottom: 5%;
-  width: 50%
+  width: 60%
 }
 
 .form-control-lg{
-  box-sizing:border-box;
-  width:100%
+  box-sizing: border-box;
+  width: 100%
+}
+
+.next-prev-btn{
+  display: inline-block
+}
+
+.next-prev-container{
+  margin-top: 5%;
+  text-align: center
 }
 </style>
 
