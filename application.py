@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, validators
+from wtforms import DecimalField, StringField, SubmitField, validators
 
 app = Flask(__name__, template_folder = "templates")
 app.config["SECRET_KEY"] = "d3b157034a1d5e676a229d3c9653042c"
@@ -33,7 +33,8 @@ NO_VENUES = 1
 Form Class for Main Page
 """
 class TakeQuery(FlaskForm):
-    query = StringField("What's in store today?", validators = [validators.DataRequired()])
+    query = StringField("What's in store today?", validators = [validators.DataRequired(message = "testing custom message")])
+    radius = DecimalField("Maximum Distance (miles)", validators = [validators.NumberRange(0, 50, "Please enter a valid distance between 0 and 50.")])
     submit = SubmitField("Give me some suggestions!")
 
 class NextVenue(FlaskForm):
@@ -72,6 +73,8 @@ def home():
         # No venues observed yet, get list of venues
         while len(venues) == 0:
             query = form.query.data
+            radius = form.radius.data
+            print("radius: " + str(radius))
             venues = nearby_venues(location_data, query)
             if venues == "API Usage Exceeded":
                 # Case that API does not allow new requests, nothing to do 
@@ -87,6 +90,7 @@ def home():
         if get_details(suggested) == "API Usage Exceeded":
             # Case that API does not allow new requests, nothing to do 
             return render_template("home.html", form = form, error_status = API_REQUEST)
+        suggested.assign_members()
         if len(venues) == 1:
             return render_template("home.html", form = form, suggested = suggested)
         return render_template("home.html", form = form, next_venue = next_venue, suggested = suggested)
@@ -122,4 +126,4 @@ def home():
 
 @app.route("/about", methods = ["POST", "GET"])
 def about():
-    return render_template("about.html", title = "About")
+    return render_template("about.html", title = "Venue Suggester - About Page")

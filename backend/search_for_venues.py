@@ -2,7 +2,6 @@
 Uses Foursquare's Places API to search for nearby venues given location data and other parameters.
 """
 
-from pprint import pprint
 import config
 import numpy as np
 import json

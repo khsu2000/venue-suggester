@@ -21,6 +21,16 @@ class Venue:
         self.contacts = None 
         self.hours = None
 
+    def assign_members(self):
+        # Assigns values to all attributes
+        # Calls all get functions at once to try to improve caching
+        self.description = self.get_description()
+        self.url = self.get_url()
+        self.canonical_url = self.get_canonical_url()
+        self.rating = self.get_rating()
+        self.contacts = self.get_contacts()
+        self.hours = self.get_hours()
+
     def get_name(self):
         # Returns name (string)
         return self.name
@@ -47,11 +57,11 @@ class Venue:
         if self.hours != None:
             return self.hours
         if self.details == None:
-            return ""
+            return "Hours not listed."
         days = self.details.get("hours", {}).get("timeframes", [{}])[0].get("days", "")
         hours = self.details.get("hours", {}).get("timeframes", [{}])[0].get("open", [{}])[0].get("renderedTime", "")
         if not days or not hours:
-            return ""
+            return "Hours not listed."
         self.hours = "".join(["Open ", days, " for/from ", hours, "."])
         return self.hours
 
@@ -141,6 +151,20 @@ class Venue:
 
     def __repr__(self):
         return "Venue(id = {0}, address = {1}, name = {2})".format(self.id, self.get_address(), self.name)
+
+def miles_to_meters(miles):
+    """
+    Converts miles to meters. 
+
+    Parameters:
+    -----------
+    miles (float): Miles to be converted. 
+
+    Returns:
+    --------
+    int: Number of equivalent meters. 
+    """
+    return int(miles * 1609.34)
 
 def write_to_json(data, filename):
     """
