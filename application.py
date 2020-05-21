@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for
 from flask_wtf import FlaskForm
-from wtforms import DecimalField, StringField, SubmitField, validators
+from wtforms import FloatField, StringField, SubmitField, validators
 
 app = Flask(__name__, template_folder = "templates")
 app.config["SECRET_KEY"] = "d3b157034a1d5e676a229d3c9653042c"
@@ -12,7 +12,7 @@ import sys
 sys.path.insert(0, "./backend")
 from get_current_location import get_location_data
 from search_for_venues import nearby_venues, get_details, distance_weighted_order
-from utils import Venue, venues_to_dicts, dicts_to_venues
+from utils import Venue, venues_to_dicts, dicts_to_venues, miles_to_meters
 
 """
 Global Variables
@@ -22,6 +22,7 @@ venues = []
 original_location = ()
 query = ""
 suggested_index = 0
+radius = 0
 
 """
 Constants for Errors 
@@ -33,8 +34,8 @@ NO_VENUES = 1
 Form Class for Main Page
 """
 class TakeQuery(FlaskForm):
-    query = StringField("What's in store today?", validators = [validators.DataRequired(message = "testing custom message")])
-    radius = DecimalField("Maximum Distance (miles)", validators = [validators.NumberRange(0, 50, "Please enter a valid distance between 0 and 50.")])
+    query = StringField("What's in store today?", validators = [validators.DataRequired(message = "Please enter at least one keyword.")])
+    radius = FloatField("Maximum Distance (miles)", validators = [validators.NumberRange(0, 50, "Please enter a distance between 0 and 50.")])
     submit = SubmitField("Give me some suggestions!")
 
 class NextVenue(FlaskForm):
@@ -51,6 +52,7 @@ def home():
     global original_location
     global query
     global suggested_index
+    global radius
         
     # Instantiation of forms 
     form = TakeQuery()
@@ -73,9 +75,8 @@ def home():
         # No venues observed yet, get list of venues
         while len(venues) == 0:
             query = form.query.data
-            radius = form.radius.data
-            print("radius: " + str(radius))
-            venues = nearby_venues(location_data, query)
+            radius = miles_to_meters(form.radius.data)
+            venues = nearby_venues(location_data, query, radius)
             if venues == "API Usage Exceeded":
                 # Case that API does not allow new requests, nothing to do 
                 return render_template("home.html", form = form, error_status = API_REQUEST)
