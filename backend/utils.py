@@ -4,6 +4,8 @@ Utility functions and classes.
 import json
 from urllib.parse import quote
 
+DEFAULT_METER_CNT = 8046
+
 class Venue:
     """
     Class used to store venue data.
@@ -57,13 +59,18 @@ class Venue:
         if self.hours != None:
             return self.hours
         if self.details == None:
-            return "Hours not listed."
-        days = self.details.get("hours", {}).get("timeframes", [{}])[0].get("days", "")
-        hours = self.details.get("hours", {}).get("timeframes", [{}])[0].get("open", [{}])[0].get("renderedTime", "")
-        if not days or not hours:
-            return "Hours not listed."
-        self.hours = "".join(["Open ", days, " for/from ", hours, "."])
-        return self.hours
+            self.hours = "Hours not listed."
+            return self.hours
+        try:
+            days = self.details.get("hours", {}).get("timeframes", [{}])[0].get("days", "")
+            hours = self.details.get("hours", {}).get("timeframes", [{}])[0].get("open", [{}])[0].get("renderedTime", "")
+            if not days or not hours:
+                return "Hours not listed."
+            self.hours = "".join(["Open ", days, " for/from ", hours, "."])
+            return self.hours
+        except:
+            self.hours = "Hours not listed."
+            return self.hours
 
     def get_description(self):
         # Returns provided description extracted from details (string)
@@ -162,9 +169,12 @@ def miles_to_meters(miles):
 
     Returns:
     --------
-    int: Number of equivalent meters. 
+    int: Number of equivalent meters. If it encounters an error, returns DEFAULT_METER_CNT. 
     """
-    return int(miles * 1609.34)
+    try:
+        return int(miles * 1609.34)
+    except:
+        return DEFAULT_METER_CNT
 
 def write_to_json(data, filename):
     """

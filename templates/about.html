@@ -1,12 +1,69 @@
 {% extends "layout.html" %}
 {% block content %}
-  <h1>About Page??</h1>
-  <h3>Resources</h3>
-  <dt>ipdata.co: https://ipdata.co/</dt>
-  <dd>Ipdata.co is used to get the location of the user when he or she first visits the webpage. Using ipdata.co, the web app can get information about the user's location like the user's current city or lat/lon coordinates.</dd>
-  <dt>Foursquare: https://foursquare.com/</dt>
-  <dd>Foursquare is used to query nearby venues. Given search keywords, a search radius, and information about the user's location, the web app uses Foursquare's explore endpoint to get a list of relevant venues.</dd>
-  <h3>Mistakes</h3>
-  <p>Didn't use Google places API, which is just generally more comprehensive. Google places API was actually the first API that I tried to use, but I couldn't figure out how to get around billing. After that, was choosing between yelp and foursquare; chose 4sq because was originally planning on making this based around picking locations to study, so 4sq would be better bc individual users can add more info about specific halls and whatever on campus. However, generalized to restaurants and coffee adn bars and places to hang out in general, so turns out yelp wouldve been more successful here
-  </p>
+  <div class="about-container">
+    <h1>About the Venue Suggester</h1>
+    <p>This page documents my process building this web app and includes additional information about the resources I used.</p>
+    <div class="section">
+      <h4>Resources</h4>
+      <dt><a href="https://ipdata.co/" target="_blank">ipdata.co</a></dt>
+      <dd>I use the ipdata.co API to get your location when you first visit this site. With ipdata.co, the web app can get information about the your current location like what city you're in or your latitude and longitude coordinates.</dd>
+      <dt><a href="https://foursquare.com/" target="_blank">Foursquare Places API</a></dt>
+      <dd>After ipdata.co locates where you are, I use Foursquare's Places API to create a list of nearby venues. Given search keywords, a search radius, and information about the user's location, the web app uses Places API's <code>explore</code> endpoint to get a list of nearby, relevant venues and the <code>venue details</code> endpoint to get specific information about a single venue.</dd>
+      <dt><a href="https://flask.palletsprojects.com/en/1.1.x/" target="_blank">Flask</a></dt>
+      <dd>I built the actual page with Flask. I chose Flask because the backend itself was made with Python, so Flask's ability to work with Python's objects and functions made it a natural pick. This was my first time working with Flask to build a site, so I struggled with trying to decide what was the best implementation option in several cases (for example, using <a href="https://wtforms.readthedocs.io/en/2.4.x/" target="_blank">WTForms</a> instead of just HTML).</dd>
+    </div>
+    <div class="section">
+      <h4>Motivation</h4>
+      <dd>I had originally planned on creating an application to randomly recommend locations to study around Berkeley's campus, since I was getting bored of just studying in my dorm. However, I later realized that using Foursquare's Places API enables the web application to recommend any type of venue, so the application became a general venue suggester.</dd>
+    </div>
+    <div class="section">
+      <h4>Development Process</h4>
+      <dt>Backend</dt>
+      <dd>
+      The backend part of this web app was relatively straightforward to piece together. The bulk of the logic is contained in three files:
+        <ul>
+          <li class="subheader">/backend/get_current_location.py</li>
+          <dd>The only function in this file is <code>get_location_data</code>, which just makes a request to ipdata.co's API to get the information about where the user is. This request only returns a general vicinity instead of an exact address; the relevant information that the web app uses from the result of this function are the longitude and latitude coordinates of the user. One issue to note about using the user's longitude and latitude coordinates is that the suggested venues may actually be further from than the maximum distance he or she entered, since geographical coordinates are too imprecise to encode distances of only a couple miles.</dd>
+          <li class="subheader">/backend/search_for_venues.py</li>
+          <dd>This file uses Foursquare's Places API's <code>explore</code> endpoint to get a list of nearby venues given the user's latlon coordinates, search key words, and maximum search radius. In addition to just having a function that makes a request to Foursquare's API, the file includes another function called <code>distance_weighted_order</code> that shuffles the list of venues based on distance from the user. To make the venue suggester's recommendations interesting but not completely random, <code>distance_weighted_order</code> creates a smoothed probability distribution based on the venues' distances and repeatedly draws from the distribution to form a new ordering. Finally, <code>get_details</code> takes a single venue and fetches information about its hours, phone number, social media, and ratings/reviews. This function is called lazily whenever the user presses the "Next Suggestion", "Previous Suggestion" or main suggestion buttons. In hindsight, one improvement I would have done is to make the error handling more consistent. A technique that I learned from working with PintOS during my operating systems class is to keep error codes as easily accessible enums in a global file; in my current implementation, functions will return unexpected values like the string "API Usage Exceeded" to indicate errors, which requires other functions to know about this specific string to handle this error. However, if this were instad kept in a global enum, it would improve both the code's consistency and compartmentalization.</dd>
+          <li class="subheader">/backend/utils.py</li>
+          <dd>After making the requests, the rest of the work falls on utils.py. Other than a few helper functions, utils.py is important because it contains the <code>Venue</code> class, which processes the data returned from <code>get_details</code> in search_for_venues.py. The <code>Venue</code> class has many getter functions that the Flask frontend uses to obtain strings or dictionaries describing attributes about the venue (as an example, some of these getter functions include <code>get_hours</code>, <code>get_url</code>, and <code>get_contacts</code>). At first, I thought it would be more advantageous to also have the getter functions be lazy and only process the data when a specific getter was called by the Flask app. However, I later realized that there's no situation where only a subset of the getter functions will be called, since the page displays all of the venue's information at once. As a result, I decided to have all of a venue's getter functions' information be processed as soon as <code>get_details</code> is called, since parsing that data in one continuous pass may lead to better caching.</dd>
+        </ul>
+      </dd>
+      <dt>Frontend</dt>
+      <dd>I struggled much more with the frontend compared with the backend, especially in terms of handling code complexity as I continued working. While I had generally planned out how to attack the backend, my decisions regarding how to implement the frontend were more shortsighted and based off of the most recent Flask tutorial or Stack Overflow post I saw. As a result, this led to issues with code readability with the abundance of conditionals and error checking crammed together. The main components of the frontend include the navigation bar at the top, the user query section, and the venue info display section created after the user's query info has been submitted.
+        <ul>
+          <li class="subheader">Top Navigation Bar</li>
+          <dd>The navigation bar on top is kept in /templates/layout.html, so all pages (all two of them) will have access to the navigation bar. Creating the navigation bar was a straightforward application of one of GeeksforGeeks' tutorials. 
+          <li class="subheader">User Info Input</li>
+          <dd>This refers to the area where users can enter their search keywords as well as how far they're willing to travel. This information along with the user's location (the <code>get_location_data</code> function is called when the user first visits the site) is sufficient for the web app to generate a list of suggestions by using Foursquare's <code>explore</code> API endpoint. One challenge I mentioned earlier was choosing between WTForms and just using HTML to create the user input section. I chose to use WTForms since they had useful built-in validators. The page waits until all the prerequisite information has been filled in and the form has been validated successfully to try getting a list of venues.</dd>
+          <li class="subheader">Venue Info Display</li>
+          <dd>The venue info display is the area beneath the form where info on the venue suggestions are displayed. After the user info form has been submitted and successfully validated, Foursquare's <code>explore</code> enpoint is called and a biased ordered list of <code>Venue</code> objects is returned. The app keeps track of which venue is shown to the user by storing the specific index of that venue in the list. By pressing the "Next Suggestion" or "Previous Suggestion" buttons, the user is incrementing or decrementing the index. In my opinion, this part of the app is where using quick fixes for my code instead of planning everything out beforehand caused me the most problems. For example, one of the most obnoxious aspects about actually using the web app is that the page refreshes every single time the "Next Suggestion" or "Previous Suggestion"; this was because one of the first features I learned about Flask was the <code>render_template</code> function, which can take many arguments and produces a new page to be displayed to the user. I built my web app around this function and conditionally rendered the contents in the venue info display section so that every time this section changes, the page will be refreshed. Instead of using conditionals with <code>render_template</code>, the proper way to handle this was to use AJAX to dynamically update this section. However, doing so would require the entire frontend to be rewritten, so the current suboptimal implementation is staying around.</dd>
+        </ul>
+      </dd>
+    </div>
+    <div class="section">
+      <h4>Final Reflection</h4>
+      <dd>All in all, the project was a good learning experience, and I now have a better understanding of how a web application's front and back ends are connected. I've also had the chance to explore Python requests, Flask, and deployment for the first time through this project. If I were to implement this project again, I definitely would have researched Flask in greater depth before I even started writing any code to approach the frontend more methodically. Additionally, I would have tried to take less extended breaks between working on this project. I started this project in February 2020 and finished at the end of May 2020, but I was constantly interrupted by coursework and extracurriculars during the semester. During these breaks, I often lost focus of what goals needed to be completed next--in the future, I will try to set aside a block of time to start and finish projects without shifting focus. Although the final product is far from perfect, I still gathered both experience with the specific technologies I used as well as insights about managing and structuring projects in general. I look forward to bringing these new skills to my future work!</dd>
+    </div>
+    <div class="section">
+      <h4>Contact</h4>
+      <dd>If you would like to get in touch with me about this project, my email is <a href="mailto: kevin.hsu@berkeley.edu">kevin.hsu@berkeley.edu</a>.</dd>
+    </div>
+  </div>
+
+  <style>
+  .about-container{
+    margin: 2% auto;
+    width: 70%
+  }
+  
+  .subheader{
+    font-style: italic
+  }
+  
+  .section{
+    margin: 2.5%
+  }
+  </style>
 {% endblock content %}

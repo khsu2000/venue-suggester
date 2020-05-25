@@ -4,7 +4,6 @@ Source: ipdata.co
 """
 
 import config
-from utils import write_to_json
 from ipdata import ipdata
 import requests
 
@@ -36,10 +35,6 @@ def get_location_data():
     except Exception as e:
         print("Failed to get location:", e)
         return {}
-
-def main():
-    location_data = get_location_data()
-    write_to_json(location_data, "location_data.json")
 
 if __name__ == "__main__":
     main()

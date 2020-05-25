@@ -6,7 +6,7 @@ import config
 import numpy as np
 import json
 import requests
-from utils import write_to_json, read_from_json, Venue, venues_to_dicts, dicts_to_venues
+from utils import Venue, venues_to_dicts, dicts_to_venues
 
 fs_versioning_date = "20200316"
 
@@ -143,21 +143,3 @@ def distance_weighted_order(venues_data, original_location, smoothing_coeff = 0.
         last_weight = d.pop(venue)
         d = dict(zip(d.keys(), np.array(list(d.values())) / (1 - last_weight)))
     return reordered
-
-def main():
-    location_data = read_from_json("location_data.json")
-    venues_list = nearby_venues(location_data, query = "bar")
-    original_location = (location_data["latitude"], location_data["longitude"])
-    for venue in venues_list:
-        get_details(venue)
-        print("\nvenue: " + str(venue))
-        print("description: " + str(venue.get_description()))
-        print("url: " + str(venue.get_url()))
-        print("canonical: " + str(venue.get_canonical_url()))
-        print("rating: " + str(venue.get_rating()))
-        print("contacts: " + str(venue.get_contacts()))
-    write_to_json(venues_to_dicts(venues_list), "venues.json")
-    write_to_json(venues_to_dicts(distance_weighted_order(venues_list, original_location)), "reordered_venues.json")
-
-if __name__ == "__main__":
-    main()

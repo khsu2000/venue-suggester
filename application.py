@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for
 from flask_wtf import FlaskForm
-from wtforms import FloatField, StringField, SubmitField, validators
+from wtforms import FloatField, StringField, SubmitField
+from wtforms.validators import DataRequired, Optional, NumberRange
 
 app = Flask(__name__, template_folder = "templates")
 app.config["SECRET_KEY"] = "d3b157034a1d5e676a229d3c9653042c"
@@ -34,8 +35,8 @@ NO_VENUES = 1
 Form Class for Main Page
 """
 class TakeQuery(FlaskForm):
-    query = StringField("What's in store today?", validators = [validators.DataRequired(message = "Please enter at least one keyword.")])
-    radius = FloatField("Maximum Distance (miles)", validators = [validators.NumberRange(0, 50, "Please enter a distance between 0 and 50.")])
+    query = StringField("What's in store today?", validators = [DataRequired(message = "Please enter at least one keyword.")])
+    radius = FloatField("Maximum Distance (miles)", validators = [NumberRange(0, 50, "Please enter a distance between 0 and 50."), Optional()])
     submit = SubmitField("Give me some suggestions!")
 
 class NextVenue(FlaskForm):
@@ -88,9 +89,10 @@ def home():
         # Successfully acquired list of venues at this point 
         suggested_index = 0
         suggested = venues[suggested_index]
-        if get_details(suggested) == "API Usage Exceeded":
-            # Case that API does not allow new requests, nothing to do 
-            return render_template("home.html", form = form, error_status = API_REQUEST)
+        if suggested.details == None:
+            if get_details(suggested) == "API Usage Exceeded":
+                # Case that API does not allow new requests, nothing to do 
+                return render_template("home.html", form = form, error_status = API_REQUEST)
         suggested.assign_members()
         if len(venues) == 1:
             return render_template("home.html", form = form, suggested = suggested)
@@ -104,9 +106,10 @@ def home():
             return render_template("home.html", form = form, next_venue = next_venue, suggested = venues[suggested_index])
         suggested_index -= 1
         suggested = venues[suggested_index]
-        if get_details(suggested) == "API Usage Exceeded":
-            # Case that API does not allow new requests, nothing to do 
-            return render_template("home.html", form = form, error_status = API_REQUEST)
+        if suggested.details == None:
+            if get_details(suggested) == "API Usage Exceeded":
+                # Case that API does not allow new requests, nothing to do 
+                return render_template("home.html", form = form, error_status = API_REQUEST)
         return render_template("home.html", form = form, prev_venue = prev_venue, next_venue = next_venue, suggested = suggested)
 
     if next_venue.next_query.data and next_venue.validate():
@@ -117,9 +120,10 @@ def home():
             return render_template("home.html", form = form, prev_venue = prev_venue, suggested = venues[suggested_index])
         suggested_index += 1
         suggested = venues[suggested_index]
-        if get_details(suggested) == "API Usage Exceeded":
-            # Case that API does not allow new requests, nothing to do 
-            return render_template("home.html", form = form, error_status = API_REQUEST)
+        if suggested.details == None:
+            if get_details(suggested) == "API Usage Exceeded":
+                # Case that API does not allow new requests, nothing to do 
+                return render_template("home.html", form = form, error_status = API_REQUEST)
         return render_template("home.html", form = form, prev_venue = prev_venue, next_venue = next_venue, suggested = suggested)
 
     # Default case where neither button has been clicked
