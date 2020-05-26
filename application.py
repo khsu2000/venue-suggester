@@ -75,7 +75,7 @@ def home():
             if session["venues"] == []:
                 # Case that there are no venues found 
                 return render_template("home.html", form = form, error_status = NO_VENUES)
-            session["venues"] = venues_to_dicts(distance_weighted_order(dicts_to_venues(session["venues")], session["original_location"]))
+            session["venues"] = venues_to_dicts(distance_weighted_order(dicts_to_venues(session["venues"]), session["original_location"]))
 
         # Successfully acquired list of venues at this point 
         session["suggested_index"] = 0
