@@ -15,13 +15,13 @@ class Venue:
         self.id = venue_dictionary["id"]
         self.location = venue_dictionary["location"]
         self.name = venue_dictionary["name"]
-        self.details = None
-        self.description = None 
-        self.url = None 
-        self.canonical_url = None 
-        self.rating = None 
-        self.contacts = None 
-        self.hours = None
+        self.details = venue_dictionary.get("details", None) 
+        self.description = venue_dictionary.get("description", None)
+        self.url = venue_dictionary.get("url", None)
+        self.canonical_url = venue_dictionary.get("canonical_url", None)
+        self.rating = venue_dictionary.get("rating", None)
+        self.contacts = venue_dictionary.get("contacts", None)
+        self.hours = venue_dictionary.get("hours", None)
 
     def assign_members(self):
         # Assigns values to all attributes
@@ -147,11 +147,17 @@ class Venue:
 
     def to_dict(self):
         # Returns dictionary representation of Venue object.
-        return {
+        d = {
             "id": self.id,
             "location": self.location,
             "name": self.name
         }
+        remaining_attribute_names = ["details", "description", "url", "canonical_url", "rating", "contacts", "hours"]
+        remaining_attribute_vals = [self.details, self.description, self.url, self.canonical_url, self.rating, self.contacts, self.hours]
+        for i in range(len(remaining_attribute_names)):
+            if remaining_attribute_vals[i]:
+                d[remaining_attribute_names[i]] = remaining_attribute_vals[i]
+        return d
 
     def __str__(self):
         return "Venue(id = {0}, address = {1}, name = {2})".format(self.id, self.get_address(), self.name)
@@ -226,9 +232,12 @@ def venues_to_dicts(venue_list):
 
     Returns:
     --------
-    list: A list of dictionaries.
+    list: A list of dictionaries. Returns original object if encounters failure.
     """
-    return [venue.to_dict() for venue in venue_list]
+    try:
+        return [venue.to_dict() for venue in venue_list]
+    except:
+        return venue_list
 
 def dicts_to_venues(dicts_list):
     """
@@ -240,6 +249,6 @@ def dicts_to_venues(dicts_list):
 
     Returns:
     --------
-    list: A list of Venue objects.
+    list: A list of Venue objects. Returns original object if encounters failure. 
     """
     return [Venue(d["venue"]) for d in dicts_list]

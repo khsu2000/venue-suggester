@@ -67,18 +67,19 @@ def home():
         while len(session["venues"]) == 0:
             session["query"] = form.query.data
             session["radius"] = miles_to_meters(form.radius.data)
-            session["venues"] = nearby_venues(session["location_data"], session["query"], session["radius"])
+            # nearby_venues returns list of venues, converts to list of dictionaries to store as session variable 
+            session["venues"] = venues_to_dicts(nearby_venues(session["location_data"], session["query"], session["radius"]))
             if session["venues"] == "API Usage Exceeded":
                 # Case that API does not allow new requests, nothing to do 
                 return render_template("home.html", form = form, error_status = API_REQUEST)
             if session["venues"] == []:
                 # Case that there are no venues found 
                 return render_template("home.html", form = form, error_status = NO_VENUES)
-            session["venues"] = distance_weighted_order(session["venues"], session["original_location"])
+            session["venues"] = venues_to_dicts(distance_weighted_order(dicts_to_venues(session["venues")], session["original_location"]))
 
         # Successfully acquired list of venues at this point 
         session["suggested_index"] = 0
-        suggested = session["venues"][session["suggested_index"]]
+        suggested = dicts_to_venues(session["venues"])[session["suggested_index"]]
         if suggested.details == None:
             if get_details(suggested) == "API Usage Exceeded":
                 # Case that API does not allow new requests, nothing to do 
@@ -93,9 +94,9 @@ def home():
         if session["suggested_index"] <= 1:
             # Case where there are no prev venues following this query
             session["suggested_index"] = max(session["suggested_index"] - 1, 0)
-            return render_template("home.html", form = form, next_venue = next_venue, suggested = session["venues"][session["suggested_index"]])
+            return render_template("home.html", form = form, next_venue = next_venue, suggested = dicts_to_venues(session["venues"])[session["suggested_index"]])
         session["suggested_index"] -= 1
-        suggested = session["venues"][session["suggested_index"]]
+        suggested = dicts_to_venues(session["venues"])[session["suggested_index"]]
         if suggested.details == None:
             if get_details(suggested) == "API Usage Exceeded":
                 # Case that API does not allow new requests, nothing to do 
@@ -107,9 +108,9 @@ def home():
         if session["suggested_index"] >= len(session["venues"]) - 2:
             # Case where there are no next venues following this query
             session["suggested_index"] = min(session["suggested_index"] + 1, len(session["venues"]) - 1)
-            return render_template("home.html", form = form, prev_venue = prev_venue, suggested = session["venues"][session["suggested_index"]])
+            return render_template("home.html", form = form, prev_venue = prev_venue, suggested = dicts_to_venues(session["venues"])[session["suggested_index"]])
         session["suggested_index"] += 1
-        suggested = session["venues"][session["suggested_index"]]
+        suggested = dicts_to_venues(session["venues"])[session["suggested_index"]]
         if suggested.details == None:
             if get_details(suggested) == "API Usage Exceeded":
                 # Case that API does not allow new requests, nothing to do 
