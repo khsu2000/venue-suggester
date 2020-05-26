@@ -251,4 +251,4 @@ def dicts_to_venues(dicts_list):
     --------
     list: A list of Venue objects. Returns original object if encounters failure. 
     """
-    return [Venue(d["venue"]) for d in dicts_list]
+    return [Venue(d) for d in dicts_list]
