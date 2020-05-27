@@ -236,7 +236,7 @@ def venues_to_dicts(venue_list):
     """
     try:
         return [venue.to_dict() for venue in venue_list]
-    except:
+    except Exception as e:
         return venue_list
 
 def dicts_to_venues(dicts_list):
@@ -251,4 +251,10 @@ def dicts_to_venues(dicts_list):
     --------
     list: A list of Venue objects. Returns original object if encounters failure. 
     """
-    return [Venue(d) for d in dicts_list]
+    try: 
+        return [Venue(d) for d in dicts_list]
+    except Exception as e:
+        try:
+            return [Venue(d["venue"]) for d in dicts_list]
+        except Exception as e:
+            return dicts_list
